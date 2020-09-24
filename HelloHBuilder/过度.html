@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: relative;
+				top: 0px;
+				left: 0px;
+				transition-property: all;/*检索或设置对象中的参与过渡的属性*/
+				transition-duration:3s ;/*检索或设置对象过渡的持续时间 */
+				transition-timing-function: linear;/*检索或设置对象中过渡的动画类型 */
+				transition-delay:0s ;/* 检索或设置对象延迟过渡的时间 */
+				-webkit-transition:all 3s linear 0s ;/*游览器兼容*/
+				-ms-transition: all 3s linear 0s;
+				-moz-transition:all 3s linear 0s ;
+				transition: all 3s linear 0s;/*简写*/
+			}
+			.box:hover{
+				width: 200px;
+				height: 200px;
+				background: blue;
+				top: 100px;
+				left: 100px;
+				/*display: none;*//*隐藏*/
+			}
+			.box1{
+				width: 200px;
+				height: 200px;
+				overflow: hidden;/*溢出隐藏*/
+				position: relative;	
+				border:solid 2px rgba(0,0,0,255); ;
+			}
+			.box1 img{	
+				position: relative;	
+				top: 0px;
+				left: 0px;
+				width: 200px;
+				height: 200px;	
+				transition: all 1s linear 0s;
+			}
+			.box1 img:hover{			
+				top: -20px;
+				left: -20px;
+				width: 120%;
+				height: 120%;
+				
+			}
+			
+			
+
+			.obox{
+				position: fixed;
+				top: 500px;
+				left: 0px;
+				height: 200px;
+				
+			}
+			.obox:hover{
+				left: 0;
+			}
+			.obox1{
+				float: left;
+				width: 0px;
+				height: 100%;
+				background: green;
+				transition: all 1s;
+			}
+			.span1{
+				float: right;
+				width: 20px;
+				background: red;
+				text-align: center;
+				padding: 10px 0px;
+				margin-top: 60px;
+			}
+			.obox:hover .obox1{
+				width: 380px;
+			}
+				
+			
+			.fx1{
+				width: 50px;
+				height: 100px;
+				background-color: aqua;
+				transition: all 1s linear 0s;
+			/*	display:  list-item;*/	
+			}
+			.fx1:hover{
+				width: 200px;
+			}
+			.fx1:hover .fx2{
+				left: 0px;
+			}
+			.fx2{			
+				position: relative;
+				top: 0px;
+				left: -150px;
+				
+				text-align: center;
+				line-height: 90px;
+				font-size: 40px;
+				
+				width: 150px;
+				height:100px;		
+				transition: left 1s linear 0s;	
+			}
+			.fx3{
+				margin-top: 20px;
+				width: 50px;
+				height: 50px;
+				float: right;
+				background: url(img/yinliang1.png);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="box1">
+			<img align="center" src="img/HBuilder.png" />
+		</div>
+		<br />
+		<hr />		
+		<div class="obox">
+			<div class="obox1"></div>
+			<span class="span1">分享到</span>
+		</div>
+		<br />
+		<hr />	
+		<div class="fx1">
+			<div class="fx3"></div>		
+			<div class="fx2"><span>找客服</span></div>						
+		</div>
+		<br />
+		<hr />
+		
+	</body>
+</html>

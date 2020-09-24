@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: aqua;
+				margin: 20px;
+			}
+			.x1{
+				border-radius:20px 20px 20px 20px;
+			}
+			.x2{
+				border-top-right-radius:20px;
+				border-bottom-left-radius:20px;
+				border-top-left-radius: 20px;
+			}
+			.x2 div{
+				width: 0px;
+				height: 0px;
+				margin-left: 90%;
+				margin-top: 60%;
+				background-color: rgba(0,0,0,0) ;
+				border:solid 10px rgba(255,255,255,0);
+				border-bottom:solid 10px white;
+			}
+			.x3{
+				border-bottom-left-radius:20px;
+				border-bottom-right-radius:20px;
+				position: relative;
+			}
+			.x3 div{
+				height: 20px;
+				width: 20px;
+				background-color: white;
+				border-radius:20px 20px 20px 20px;	
+				position: relative;			
+			}
+			.x3 div:nth-child(1){
+				top: -50px;
+				left: -30px;
+			}
+			.x3 div:nth-child(2){
+				top: -90px;
+				left: 70px;
+			}
+			.x4{
+				border-top-right-radius:70px;
+				border-bottom-left-radius:70px;
+			}
+			.x5{
+				background-color:red ;
+				border-radius:50px 50px 50px 50px;
+				position: relative;			
+			}
+			.x5 div{							
+				position: relative;				
+			}
+			.x5 div:nth-child(1){
+				border-top-left-radius:50px;
+				border-top-right-radius:50px;
+				height: 50px;
+				top: -40px;
+				left: -20px;	
+			}
+			.x5 div:nth-child(2){
+				height: 50px;
+				width: 50px;
+				border-radius:50px 50px 50px 50px;
+				top: -80px;
+				left: -20px;
+			}
+			.x5 div:nth-child(3){
+				height: 10px;
+				width: 10px;
+				background-color: red;
+				border-radius:50px 50px 50px 50px;
+				position: absolute;/*绝对*/
+				top: 30px;
+				left: 0px;
+			}
+			.x5 div:nth-child(4){
+				height: 50px;
+				width: 50px;
+				background-color: red;
+				border-radius:50px 50px 50px 50px;
+				position: absolute;/*绝对*/
+				top: 0px;
+				left: 30px;
+			}
+			.x5 div:nth-child(5){
+				height: 10px;
+				width: 10px;
+				border-radius:50px 50px 50px 50px;
+				position: absolute;/*绝对*/
+				top: 30px;
+				left: 50px;
+			}
+			.x6{
+				border-top-left-radius:50px;
+				border-bottom-left-radius:50px;
+			}
+			.x7{
+				height: 50px;
+				border-top-left-radius:50px;
+				border-top-right-radius:50px;
+			}
+			.x8{
+				height: 50px;
+				border-radius: 30px;
+			}
+			.x9{
+				width: 150px;
+				border:solid 1px #000000;
+				background-color: white;
+				position: absolute;
+			}
+			.x9>div{
+				width: 0px;
+				height: 0px;
+				/*margin-left: 20%;
+				margin-top: 54%;*/
+				left: 10px;
+				top: 80px;
+				background-color: rgba(0,0,0,0) ;
+				border:solid 20px rgba(255,255,255,0);
+				border-top:solid 20px #000000;
+				position: absolute;
+			}
+			.x9_1{
+				width: 0px;
+				height: 0px;
+				position: absolute;
+				left: -40px;
+				top: -42px;
+				background-color: rgba(0,0,0,0) ;
+				border:solid 20px rgba(255,255,255,0);
+				border-top:solid 20px white;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="x1">1</div>
+		<div class="x2">2<div></div></div>
+		<div class="x3">3<div></div><div></div></div>
+		<div class="x4">4</div>
+		<div class="x5">5<div></div><div></div><div></div><div></div><div></div></div>
+		<div class="x6">6</div>
+		<div class="x7">7</div>
+		<div class="x8">8</div>
+		<div class="x9">9<div><div class="x9_1"></div></div></div>
+	</body>
+</html>

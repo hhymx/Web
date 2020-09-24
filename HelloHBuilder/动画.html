@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			.dhcox1{
+				width: 200px;
+				height: 100px;
+				overflow: hidden;/*溢出隐藏*/
+				margin: 10px auto;
+				/*background-color: #00FFFF;		*/
+			}
+			.dhx1{
+				position: relative;
+				top: 0px;
+				left: 0px;
+				width: 3px;
+				height: 30px;
+				background-color: red;
+				margin: 0px auto;
+				animation: mydhx1 2s linear 0s infinite;
+			}
+			@keyframes mydhx1{
+				0%{height: 30px;}
+				50%{height: 110px;top: 0px;}
+				100%{top: 100px;}
+			}
+			.dhx2{
+				width: 141px;
+				height: 85px;			
+				position: relative;
+				top: 100px;
+				left: 0px;
+				background: url(img/bird1.png);
+				animation: mydhx2 5s step-start 0s infinite;
+			}
+			@keyframes mydhx2{
+				0%{background: url(img/bird2.png);left:  0%;}
+				5%{background: url(img/bird3.png);left:  5%;}
+				10%{background: url(img/bird4.png);left: 10%;}
+				15%{background: url(img/bird5.png);left: 15%;}
+				20%{background: url(img/bird6.png);left: 20%;}
+				25%{background: url(img/bird7.png);left: 25%;}
+				
+				30%{background: url(img/bird1.png);left: 30%;}					
+				35%{background: url(img/bird2.png);left: 35%;}
+				40%{background: url(img/bird3.png);left: 40%;}
+				45%{background: url(img/bird4.png);left: 45%;}
+				50%{background: url(img/bird5.png);left: 50%;}
+				55%{background: url(img/bird6.png);left: 55%;}
+				60%{background: url(img/bird7.png);left: 60%;}
+				
+				65%{background: url(img/bird8.png);left: 65%;}				
+				70%{background: url(img/bird8.png);left: 70%;}
+				75%{background: url(img/bird8.png);left: 75%;}
+				80%{background: url(img/bird8.png);left: 80%;}
+				85%{background: url(img/bird8.png);left: 85%;}
+				90%{background: url(img/bird8.png);left: 90%;}
+				95%{background: url(img/bird8.png);left: 95%;}
+				
+				100%{background: url(img/bird8.png);left: 100%;}
+			}
+			
+			.dhx3{
+				width: 200px;
+				height: 50px;
+				overflow: hidden;/*溢出隐藏*/
+				margin: 300px auto;	
+				border: solid 2px aquamarine;
+			}
+			.dhx3:hover{
+				animation-play-state: paused;	/*//动画的状态。paused 暂停；running 运动（默认）*/
+			}
+			.dhx3 div{
+				position: relative;
+				text-align: center;
+				top: 0px;
+				left: 0px;
+				width: 200px;
+				height: 200px;
+				margin: 0px auto;
+				animation: my3 4s linear 0s infinite;
+			}
+			.dhx3 p{
+				line-height:50px;
+				font-size: 30px;
+			}
+			@keyframes my3{		
+				0%{top: 0;}
+				16.5%{top: -50px;}
+				33%{top: -50px;}
+				50%{top: -100px;}
+				66.5%{top: -100px;}
+				83%{top: -150px;}
+				100%{top: -150px;}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dhcox1">
+			<div class="dhx1"></div>
+		</div>
+		
+		<div class="dhx2">
+		</div>
+		
+		<div class="dhx3">
+			<div>				
+				<p>111111</p>
+				<p>22222</p>
+				<p>333333</p>
+				<p>111111</p>
+			</div>
+		</div>
+	</body>
+</html>
+<!--
+指定动画名称和动画效果。格式如下：
+@keyframes myfirst{
+	from {background: red;}
+	to {background: yellow;}
+}
+
+animation: 属性是一个简写属性，用于设置八个动画属性：
+animation-name    			//规定需要绑定到选择器的 keyframe 名称
+animation-duration   		//规定完成动画所花费的时间。默认值是 0，意味着没有动画效果
+animation-timing-function	//规定动画的速度曲线
+animation-delay				//规定在动画开始之前的延迟。
+animation-iteration-count	//规定动画应该播放的次数。infinite(无限)
+animation-direction			//规定是否应该轮流反向播放动画。alternate（反向）
+animation-play-state		//动画的状态。paused 暂停；running 运动（默认）
+animation-fill-mode			//属性规定动画在播放之前或之后，其动画效果是否可见。
+------------
+animation-timing-function  规定动画的速度曲线
+linear	动画从头到尾的速度是相同的。	
+ease	默认。动画以低速开始，然后加快，在结束前变慢。
+ease-in	动画以低速开始。	
+ease-out	动画以低速结束。	
+ease-in-out	动画以低速开始和结束。	
+cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。
+steps(1)  steps(1,start)，动画分成1步，动画执行时为开始左侧端点的部分为开始；
+steps(1,end)：动画分成一步，动画执行时以结尾端点为开始，默认值为end
+-------------
+animation-fill-mode 属性规定动画在播放之前或之后，其动画效果是否可见。
+none 表示不设置结束之后的状态，默认情况下回到跟初始状态一样。
+forwards 表示将动画元素设置为整个动画结束时的状态。
+backwards 明确设置动画结束之后回到初始状态,在动画等待的那段时间内，元素的样式将设置为动画第一帧的样式；
+both：相当于同时配置了backwards和forwards，意味着在动画等待和动画结束状态，元素将分别应用动画第一帧和最后一帧的样式。
+
+ -->
