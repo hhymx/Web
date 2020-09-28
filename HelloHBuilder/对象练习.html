@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+//			var d = new Date();
+//			在调用Date构造方法而不传递参数的情况下，新建的对象自动获取当前的时间和日期。
+//			创建日期对象并指定时间
+//			var d = new Date("2015/08/22");
+//			var d = new Date(2016,04,13,14,34);
+//		  	【注】日期的格式可以是“2015/08/22”，“2015-08-22”，或1970年当前日期的毫秒数14456521211021 
+//			1、 set / getDate() 从Date对象中返回一个月中的某一天(1~31)
+//			2、 getDay() 从Date对象返回一周中的某一天(0~6)
+//			3、 set / getMonth() 从Date对象中返回月份(0~11)
+//			4、 set / getFullYear() 从Date对象以四位数返回年份
+//			5、 set / getHours() 返回Date对象的小时(0~23)
+//			6、 set / getMinutes() 返回Date对象的分钟(0~59)
+//			7、 set / getSeconds() 返回Date对象的秒数(0~59)
+//			8、 set / getMilliseconds() 返回Date对象的毫秒
+//			9、 toString() 把Date对象转换为字符串
+//			10、 valueOf() 返回Date对象的原始值
+//			getTimezoneOffset() 返回本地时间与格林尼治标准时间(GMT) 的分钟差
+//			set / getUTCDate() 根据世界时间从Date对象返回月中的一天(1~31)
+//			getUTCDay() 根据世界时间从Date对象返回周中的一天(0~6)
+//			set / getUTCMonth() 根据世界时间从Date对象返回月份(0~11)
+//			set / getUTCFullYear() 根据世界时间从Date对象返回四位年份
+//			set / getUTCHours() 根据世界时间返回Date对象的小时(0~23)
+//			set / getUTCMinutes() 根据世界时间返回Date对象的分钟(0~59)
+//			set / getUTCSeconds() 根据世界时间返回Date对象的秒数(0~59)
+//			set / getUTCMilliseconds() 根据世界时间返回Date对象的毫秒(0~999)
+
+			window.onload = function() {
+				var p1 = document.getElementById("p1");
+				var x1 = 0;
+				var timer;
+				var fl=true;
+				var bu1=document.getElementById("bu1");
+				bu1.onclick = function() {		
+					if (fl) {
+						fl=false;
+						bu1.value="暂停";
+						timer = setInterval(function() {
+							x1++;
+							p1.innerHTML = parseInt(x1/ 1000 / 60 / 60 % 24) + "时" + parseInt(x1/ 1000 / 60 % 60) + "分" + parseInt(x1 / 1000% 60) + "秒" + x1 % 1000 + "毫秒";
+						}, 1);
+					} else{
+						fl=true;
+						bu1.value="继续";
+						clearInterval(timer); //关闭定时器
+					}
+					
+					
+				}
+				document.getElementById("bu1_2").onclick = function() {
+					x1=0;
+					p1.innerHTML = "0时0分0秒0毫秒";
+				}
+					
+				var p2 = document.getElementById("p2");
+				setInterval(function() {
+					var d = new Date();
+					p2.innerHTML=d.getFullYear()+"年"+d.getMonth()+ "月"+d.getDate()+ "日 "+d.getHours()+"时"+d.getMinutes()+"分"+d.getSeconds()+"秒";
+				}, 1000);
+				
+				var di3 = document.getElementById("di3");
+				var p3 = document.getElementById("p3");
+				var x3=0;
+				setInterval(function() {
+					if(x3<=100){
+						p3.innerHTML=x3+"%";
+						di3.style.width=x3++ +"px";
+					}else{
+						clearInterval(this); //关闭定时器
+					}
+					
+				}, 1000);
+				
+				var di4 = document.getElementById("di4");
+				var d4=0;
+				document.getElementById("bu4").onclick=function(){
+					var x4=["red", "blue", "yellow", "green", "black", "orange"];
+					setInterval(function() {
+						if(d4>=x4.length)d4=0;
+						di4.style.backgroundColor=x4[d4++];
+					}, 1000);
+				}
+				
+			}
+		</script>
+	</head>
+
+	<body>
+		<div>
+			<h2>1、实现秒表功能 : 显示时,分,秒 ，毫秒, 点击按钮开始计时</h2>
+			<p id="p1"></p>
+			<input type="button" id="bu1" value="开始" />
+			<input type="button" id="bu1_2" value="重新" />
+		</div>
+		<div>
+			<h2>2、页面上动态显示当前日期（格式：xx年xx 月xx 日 xx时 xx分 xx秒）</h2>
+			<p id="p2"></p>
+		</div>
+		<div>
+			<h2>3、实现进度条</h2>
+			<div style="width: 100px;height: 20px;overflow: hidden;border: solid 1px black;border-radius:10px;">
+				<div id="di3" style="width: 0px;height: 20px;background-color: red;"></div>
+			</div>
+			<p id="p3"></p>
+		</div>
+		<div>
+			<h2>4、有一个装有颜色的数组 ["red", "blue", "yellow", "green", "black", "orange"];点击button 启动定时器,每一秒给它换一次色</h2>
+			<div id="di4" style="width: 50px;height: 50px;"></div>
+			<input type="button" id="bu4" value="变色龙" />
+		</div>
+	</body>
+
+</html>
