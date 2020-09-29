@@ -1,10 +1,8 @@
-<!DOCTYPE html>
+.<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 		<title></title>
 		<script type="text/javascript">
 			/*
@@ -60,9 +58,15 @@
 				/////////////////////////
 				var di3=document.getElementById("di3");
 				var x3=["red", "blue", "yellow", "green", "black", "orange"];
+				var dd=true;
 				di3.onclick=function() {
-					var i= Math.round(Math.random()*5);
-					di3.style.backgroundColor=x3[i];
+					if (dd) {
+						setInterval(function() {
+							var i= Math.round(Math.random()*5);
+							di3.style.backgroundColor=x3[i];
+						}, 1000);
+					}
+					dd=false;
 				}
 				//////////////////////////
 				var in5_1=document.getElementById("in5_1");
