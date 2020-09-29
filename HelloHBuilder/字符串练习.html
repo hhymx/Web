@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * var str=“how are you”;
+			 * alert(str.length);
+			 * alert(str[0]); //获取字符串中对应下标的字符
+			 * 
+			 * str.charAt(3)    //获取下标为3的字符
+			 * str.charCodeAt(3)   //获取下标为3的字符的编码(ASCII码)
+			 * String.fromCharCode(94)    //ASCII编码转换成字符; 可传入多个参数
+			 * str.indexOf("abc")  查找字符串第一次出现的位置,如果没找到则返回-1
+			 * var index = str.search(/abc/gi); 正则匹配 (返回第一次出现的位置)注: g表示进行全局匹配，i表示匹配的时候忽略大小写
+			 * 
+			 * str.replace() 替换字符串
+			 * var str = "how are Are are you!";
+			 * var newStr = str.replace("are", "old are");
+			 * //这里的替换只能执行一次，不能够进行全局匹配，如果需要全局匹配，则应使用正则表达式： 
+			 * str.replace(/are/gi, "old are")
+			 * 
+			 * str.substring(start,end); //返回的截取字符串 范围是[start, end)注: 如果只有一个参数, 则表示到字符串最后
+			 *
+			 * str.split(separator, howmany)—根据分隔符、拆分成数组,返回数组
+			 * separator(字符串或正则表达式)
+			 * howmany(可以指定返回的数组的最大长度, 可以省略)
+			 * 【注】如果空字符串(“”)用作separator,那么stringObject中的每个字符之间都会被分割。
+			 * 
+			 * eval() 方法可计算某个字符串
+			 * toLowerCase() 方法用于把字符串转换成小写
+			 * toUpperCase() 方法用于把字符串转换成大写
+			 * 
+			 * Math对象的常用函数
+			 * Math.round(3.6)     //四舍五入
+			 * Math.random()          //返回0-1之间的随机数
+			 * Math.max(num1, num2)  //返回较大的数
+			 * Math.min(num1, num2)   //返回较小的数
+			 * Math.abs(num)     //绝对值
+			 * Math.ceil(19.3)     //向上取整
+			 * Math.floor(11.8)    //向下取整
+			 */
+			window.onload=function(){
+				var p1=document.getElementById("p1");
+				var in1=document.getElementById("in1");
+				p1.onclick=function(){
+					var str1=in1.value;
+					str1=str1.replace(/\*|\s/gi, "");
+					p1.innerHTML=str1;
+				}
+				///////////////////////////
+				var str2_0 = "When I was young, I love a girl in neighbor class.";
+				var str2_1 = str2_0.indexOf("young");
+				var str2_2 = str2_0.indexOf("girl");	
+				document.getElementById("p2").innerHTML="下标"+str2_1+":"+str2_2+":"+str2_0.substring(str2_1,str2_2+4);
+				/////////////////////////
+				var di3=document.getElementById("di3");
+				var x3=["red", "blue", "yellow", "green", "black", "orange"];
+				di3.onclick=function() {
+					var i= Math.round(Math.random()*5);
+					di3.style.backgroundColor=x3[i];
+				}
+				//////////////////////////
+				var in5_1=document.getElementById("in5_1");
+				var sp5_1=document.getElementById("sp5_1");
+				var in5_2=document.getElementById("in5_2");
+				var in5_3=document.getElementById("in5_3");
+				var sp5_3=document.getElementById("sp5_3");
+				var in5_4=document.getElementById("in5_4");	
+				var sp5_4=document.getElementById("sp5_4");
+				var spx=["QQqq","WWww","eeee","rRrr","tTtt","Yyyy","Uuuu","hhhh","oooo","pppp"];
+				var i=0;
+				in5_1.onchange = function() {
+					if (/^[^0-9]/.test(in5_1.value)) {
+						if (in5_1.value.length<=20) {
+							in5_1.value.length>=6?sp5_1.innerHTML="√":sp5_1.innerHTML="长度低于6";
+						} else {
+							sp5_1.innerHTML="长度超过20";
+						}				
+					} else {
+						sp5_1.innerHTML="不能数字开头";
+					}
+				}
+				in5_3.onchange = function() {
+					in5_2.value==in5_3.value?sp5_3.innerHTML="√":sp5_3.innerHTML="密码不一样";			
+				}
+				sp5_4.onclick=function() {
+					i= Math.round(Math.random()*9);
+					sp5_4.innerHTML=spx[i];
+				}
+				document.getElementById("bu5").onclick=function() {
+					if (in5_4.value.toLowerCase()==spx[i].toLowerCase()) {
+						if (sp5_1.innerHTML=="√") {
+							if (sp5_3.innerHTML=="√") {
+								alert("成功");
+							} else{
+								alert("密码不一样");
+							}
+						} else{
+							alert("用户名错误");
+						}
+					} else{
+						alert("验证码错误");
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="">
+			<h2>1.将下面的字符串str的敏感字符*及空格去掉 (要正确表示*得转义成:\*) var str = "H e  l  ** l    o    Wo r         L d  !";</h2>
+			<input type="text" id="in1" value="H e  l  ** l    o    Wo r         L d  !" />
+			<p id="p1" style="background-color: #00FFFF;">点我输出</p>
+		</div>
+		<div id="">
+			<h2>2.	将字符串str = “When I was young, I love a girl in neighbor class.”中,从young提取到girl。但是不许数[young,girl]</h2>
+			<p id="p2"></p>
+		</div>
+		<div id="">
+			<h2>3.	点击button 启动定时器,每一秒给它换一次颜色(颜色是随机的)。</h2>
+			<div id="di3" style="width: 100px;height: 100px;background-color: beige;">点我变色</div>
+		</div>
+		<div id="">
+			<h2>4.	完成一个注册页面：功能：填写用户名，密码，确认密码，验证码，完成注册<br />要求：<br />1、用户名不可以用数字开头，不能为空，用户名长度不低于6，不高于20<br />2、密码不能为空<br />3、两次填写密码必需一致才能提交<br />4、随机生成验证码，如： 4YT8，点击验证码要有切换功能，能忽略大小写<br />5、数据合法，点击提交才可以正确提交表单数据</h2>
+				<div style=" width: 500px;height: 200px;overflow: hidden;border: solid 1px black;border-radius:10px;">
+					用户名：<input type="text" id="in5_1" value="" /><span id="sp5_1"></span>
+					<br />
+					密码：<input type="text" id="in5_2" value="" /><br />
+					确认密码：<input type="text" id="in5_3" value="" /><span id="sp5_3"></span>
+					<br />
+					验证码：<input type="text" id="in5_4" value="" /><span style="background-color: #FFD700;" id="sp5_4">qqqq</span>
+					<br />
+					<input type="button" id="bu5" value="确定" /><br />
+				</div>
+		</div>
+	</body>
+</html>

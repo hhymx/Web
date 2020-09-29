@@ -89,11 +89,8 @@
 				var in1 = document.getElementById("in1");
 				var p1 = document.getElementById("p1");
 				var b1 = document.getElementById("b1");
-				in1.onchange = function() {
-					qwq1();
-				}
 
-				function qwq1() {
+				b1.onclick = function() {
 					var x1 = in1.value.split(",");
 					var a1 = x1[x1.length - 1]; //保存最后一位数
 					for(var j = x1.length - 1; j >= 0; j--) {
@@ -101,9 +98,6 @@
 					}
 					x1[0] = a1; //
 					p1.innerHTML = x1; //获取值innerHTML（表单控件用value,其它标签用innerHTML）
-				}
-				b1.onclick = function() {
-					qwq1();
 				}
 
 				var in2_1 = document.getElementById("in2_1");
