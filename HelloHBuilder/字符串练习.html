@@ -4,6 +4,12 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<title></title>
+		<style type="text/css">
+			label{
+				width: 90px;
+				display: inline-block;
+			}
+		</style>
 		<script type="text/javascript">
 			/*
 			 * var str=“how are you”;
@@ -128,15 +134,15 @@
 			<h2>3.	点击button 启动定时器,每一秒给它换一次颜色(颜色是随机的)。</h2>
 			<div id="di3" style="width: 100px;height: 100px;background-color: beige;">点我变色</div>
 		</div>
-		<div id="">
+		<div id="zc">
 			<h2>4.	完成一个注册页面：功能：填写用户名，密码，确认密码，验证码，完成注册<br />要求：<br />1、用户名不可以用数字开头，不能为空，用户名长度不低于6，不高于20<br />2、密码不能为空<br />3、两次填写密码必需一致才能提交<br />4、随机生成验证码，如： 4YT8，点击验证码要有切换功能，能忽略大小写<br />5、数据合法，点击提交才可以正确提交表单数据</h2>
 				<div style=" width: 500px;height: 200px;overflow: hidden;border: solid 1px black;border-radius:10px;">
-					用户名：<input type="text" id="in5_1" value="" /><span id="sp5_1"></span>
+					<label for="in5_1"> 用户名：</label><input type="text" id="in5_1" placeholder="长度6-20" value="" /><span id="sp5_1"></span>
 					<br />
-					密码：<input type="text" id="in5_2" value="" /><br />
-					确认密码：<input type="text" id="in5_3" value="" /><span id="sp5_3"></span>
+					<label for="in5_2">密码：</label><input type="text" id="in5_2" value="" /><br />
+					<label for="in5_3">确认密码：</label><input type="text" id="in5_3" value="" /><span id="sp5_3"></span>
 					<br />
-					验证码：<input type="text" id="in5_4" value="" /><span style="background-color: #FFD700;" id="sp5_4">qqqq</span>
+					<label for="in5_4">验证码：</label><input type="text" id="in5_4" value="" /><span style="background-color: #FFD700;" id="sp5_4">qqqq</span>
 					<br />
 					<input type="button" id="bu5" value="确定" /><br />
 				</div>

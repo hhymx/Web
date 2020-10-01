@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<style type="text/css">
+			#di1{
+				width: 0px;
+				height: 0px;
+				background-color:#00FFFF ;
+				text-align: center;
+				overflow: hidden;
+				position: fixed;
+				right: 50%;
+				bottom: 50%;
+			}
+		</style>
+		<script type="text/javascript">
+			/*
+			window对象的部分方法:
+			alert(text): 弹出提示框(警告框)
+			confirm(): 创建一个需要用户确认的对话框
+			prompt(text,defaultInput) :创建一个对话框要求用户输入信息
+			open(url,name,[options]) : 打开一个新窗口并返回新 window 对象
+			setInterval(): 设置定时器
+			clearInterval() : 移除定时器
+			setTimeOut() : 设置延时器
+			clearTimeOut(): 移出延时器
+			close(): 关闭窗口
+			print(): 调出打印对话框
+			//////////////////////
+			if (confirm((“请确定或者取消”)){提示框 :确定和取消
+				alert(“您按了确定！”);      //按确定返回true
+			} else{
+				alert(“您按了取消！”)       //按取消返回false
+			}       
+			var num = prompt(“请输入一个数字”, 0);  //带输入的提示框: 点击确定得到输入的值, 点击取消返回null  
+			print(); 调出打印对话框
+			/////////////////////////////
+			window.open() 方法可以导航到一个特定的URL，也可以打开一个新的浏览器窗口，一般可以接受三个参数:1. 要加载的URL2. 窗口的名称 或者 窗口的目标3. 一个特性的字符串
+			open(“http://www.baidu.com”);	           //新建页面并打开百度
+			open(“http://www.baidu.com”, “_parent”);    //在本页窗口打开,_blank是新建(默认)
+			open('http://www.baidu.com', '_blank', 'width=400,height=400,top=200,left=200' );
+			/////////////////////////
+			setTimeout()   指定的时间过后执行代码
+			写法一//直接传入函数名即可:function box(){
+				alert(“hello”);
+				}
+			setTimeout(box, 1000); 	 
+			写法二//推荐做法:setTimeout(function(){
+				alert(“hello”);
+				}, 1000);
+				取消延时器：clearTimeout(box);
+			//////////////////////////////
+			window.close() 关闭窗口//注意: 火狐浏览器 不支持
+			兼容：window.open("about:blank","_self").close()
+			///////////////////////////////////
+			window.onscroll = function() {
+				//滚动事件: 实时获取距离顶部的距离
+				谷歌不支持:document.documentElement.scrollTop;//document.body.scrollTop: 支持谷歌
+				var scrollTop = document.documentElement.scrollTop|| document.body.scrollTop;	
+			}
+			//////////////////////////////////
+			*/	
+			window.onload=function(){
+				var di1=document.getElementById("di1");
+				window.onscroll = function() {
+					var scrollTop = document.documentElement.scrollTop|| document.body.scrollTop;	
+					console.log(scrollTop);
+					if(screenTop>=100){
+						di1.style.height=600+"px";
+						di1.style.width=600+"px";
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="di1">
+			<p style="font-size: 150px;">鬼</p>
+		</div>
+		<div style="width: 20px;height: 1000px;margin: auto;">
+			<p>一座桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥</p>
+		</div>
+	</body>
+
+</html>
