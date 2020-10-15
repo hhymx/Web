@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			var bu1 = document.getElementById("bu1");
+			bu1.onclick = function() {
+				console.log("单击了鼠标");
+			}
+			bu1.ondblclick = function() {
+				console.log("双击了鼠标");
+			}	
+			bu1.onmousedown = function() {
+				console.log("按下鼠标");
+			}	
+			bu1.onmouseup = function() {
+        		console.log("松开了鼠标"); 
+			}
+			bu1.onmouseover = function() {
+        		console.log("鼠标移入了"); 
+			}
+			bu1.onmouseout = function() {
+        		console.log("鼠标移出了"); 
+			} 
+			bu1.onmousemove = function() {
+       			console.log("鼠标移动了"); 
+			} 
+			////////////////////////////////
+			//2. 键盘事件，在键盘上按下键时触发的事件; (一般由window对象或者document对象调用)//
+			键码 : keyCode属性
+			所有按键, 包括功能键(control, alt,shift, tab, 方向键等), (不包括亮度,音量..的按键)在发生 keydown和keyup事件时，
+			event对象的 keyCode属性中会包含一个代码，与键盘上一个特定的键对应。
+			对数字字母字符集，keyCode属性的值与 ASCII 码中对应大写字母或小写的编码相同, 为大写字母。
+			window.onkeydown = function(evt) {//
+    			var oEvent  = evt || window.event; 
+    			console.log(oEvent.keyCode); //键值，按任意键，得到相应的 keyCode 
+    			console.log("按下了键盘上的某个键，如果按住不放，会重复触发"); 
+   			}
+   			//注：可以使用 String.fromCharCode()将 ASCII 编码转换成实际的字符
+   			字符编码 : charCode属性//不建议使用
+			Firefox、Chrome 和 Safari 的event对象支持charCode属性，这个属性只有在发生keypress事件时才包含值，
+			而且这个值是按下的那个键所代表字符的 ASCII 编码。此时的keyCode通常等于0或者也可能等于所按键的编码
+			(键盘上的数字, 字母(区分大小写), 字符, 空格, 回车)
+			window.onkeypress = function(evt) {
+				var oEvent = evt || event;
+				console.log(oEvent.charCode);
+				console.log("按下了键盘上的字符键.如果按住不放，会重复触发"); 
+			}
+			
+			window.onkeyup = function(evt) {
+      			console.log("松开键盘上的某个键"); 
+			}		
+			///////////////////////////
+			load：当页面完全加载后触发
+			window.onload = function(evt) { 
+        		console.log("页面已经加载完毕"); 
+			}
+			unload：当页面完全卸载后触发；刷新/关闭页面时调用
+			window.onunload = function() { 
+       			console.log("页面已经卸载完毕"); 
+			}
+			///////////////////////
+			//当用户选择文本框(input 或 textarea)中的内容触发
+			input.onselect = function() { 
+        		console.log("选择了文本框中的内容"); 
+			}
+			
+			//当文本框(input 或 textarea)内容改变且失去焦点后触发。 
+			input.onchange = function() {
+       			console.log("文本框中内容改变了且失去焦点"); 
+			}
+			
+			//当文本框(input 或 textarea)内容改变时触发。 
+			input.oninput = function() { 
+       			console.log("文本框中内容改变了"); 
+			}
+			input.focus();//获得焦点
+			input.onfocus = function() { 
+       			console.log("文本框获得焦点"); 
+			}
+			
+			blur：当页面或元素失去焦点时触发。
+			input.onblur = function() { 
+       			console.log("文本框失去焦点"); 
+			}
+		
+			submit：当用户点击提交按钮在<form>元素节点上触发。 
+			<input type="submit" id="" name="" />
+			form.onsubmit = function() {
+        		console.log("提交form表单"); 
+			}
+			
+			reset：当用户点击重置按钮在<form>元素节点上触发。 
+			<input type="reset" value="" />
+			form.onreset = function() { 
+        		console.log("重置form表单"); 
+			}
+			
+			scroll：当用户滚动页面触发。
+			window.onscroll= function() { 
+        		console.log("滚动了滚动条了"); 
+			}	
+			///////////////////////////*/
+			document.oncontextmenu = function(){
+				//阻止右键菜单：创建自己的右键菜单, 则需要先阻止默认的右键菜单
+				console.log("右键被按下");
+				return false;
+			}	
+			//鼠标信息
+			document.onmousedown = function(evt) {
+				var oEvent  = evt || event; 
+				console.log(oEvent); //获取到event对象(事件对象)
+				console.log("鼠标点击的按键；"+oEvent.button); //鼠标点击的按键；0左键，1中建，2右键
+    			console.log(oEvent.clientX + ',' + oEvent.clientY); //网页页面的可视区坐标。
+        		console.log(oEvent.screenX + ',' + oEvent.screenY);//电脑屏幕区的坐标。
+			}
+			window.onload= function() {
+				
+			}
+		</script>
+	</head>
+	<body>
+		<hr />
+		<input type="button" id="bu1" value="按钮" /><br />
+		<script type="text/javascript">
+			var bu1 = document.getElementById("bu1");
+			bu1.onclick = function(evt){ 
+				var oEvent  = evt || event; //获取到event对象(事件对象)
+        		console.log("button: " + oEvent.target); 
+			}
+		</script>
+		------------------------------------------------------------------------------------------
+		<p>a标签有属性href, 在用户点击超链接标签a时, 实际上内部会调用onclick事件，那么如果我们需要在超链接跳转前做一些判断处理, 则可以将onclick指向我们自己的函数,并返回true或者false来决定是否允许超链接跳转;</p>
+		<a id="ahr" href="#">百度一下</a><br />
+		<script type="text/javascript">
+			document.getElementById("ahr").onclick = function() {
+				if(confirm("你确定要跳转吗?")) {
+					return true;
+				}else {
+					return false;
+				}
+			}
+		</script>
+		------------------------------------------------------------------------------------------
+		<p>box.addEventListener("click", func, false)<br />给box元素添加点击事件(click), 事件执行函数(func)<br />
+			* 第一个参数("click") : 事件名称(前面没有on)<br />
+			* 第二个参数(func): 事件执行函数名称(没有双引号, 也没有())<br />
+			* 第三个参数(false/true) : 是否使用捕捉(反向冒泡)，默认false，为冒泡<br />
+			移除事件监听器:<br />
+			box.removeEventListener("click", func) : 将box元素的点击事件(click), 以及对应的事件执行函数func移除<br />
+			注: 这里只会删除使用box.addEventListener()方法添加的事件监听器<br />
+			事件监听器：点击三次移除事件监听器</p>
+		<div id="div1" style="height: 30px;width:60px;background-color: #00FFFF;">按钮</div>
+		<script type="text/javascript">
+			var div1 = document.getElementById("div1");
+			div1.addEventListener("click", func, false);
+			var x=1;
+			function func(){
+				console.log("点击");
+				if (x++>=3) {
+					//将box元素的点击事件(click), 以及对应的事件执行函数func移除
+					//注: 这里只会删除使用box.addEventListener()方法添加的事件监听器
+					div1.removeEventListener("click", func);
+					console.log("结束");
+				}
+			}
+		</script>
+		------------------------------------------------------------------------------------------
+		<p>点击例2, 会触发到下层的,但是一般我们只在指定的节点上添加事件, 而不想让其传递到下层节点触发事件, 这样我们就需要阻止冒泡;例3: </p>
+		<script type="text/javascript">
+			function fun2_1 () {console.log("1");}
+			function fun2_2 () {console.log("2");}
+			function fun2_3 (evt) {
+				var oEvent = evt || event;
+				//阻止冒泡的方式有两种: ( 在指定不想再继续传递事件的节点的事件执行函数中使用)
+				oEvent.cancelBubble = true;//1, 取消冒泡
+				oEvent.stopPropagation();//2, 停止传播
+				console.log("3");
+			}
+		</script>
+		<div onclick="fun2_1()" style="height: 300px;width: 300px;background-color: cornsilk;">例1
+			<div onclick="fun2_2()" style="height: 200px;width: 200px;background-color: #00FFFF;margin: 30px auto;">例2
+			<div onclick="fun2_3()" style="height: 100px;width: 100px;background-color: #FF8C00;margin: 30px auto;">例3</div>
+			</div>
+		</div>
+		------------------------------------------------------------------------------------------
+		
+		------------------------------------------------------------------------------------------
+		
+		------------------------------------------------------------------------------------------
+		
+		------------------------------------------------------------------------------------------
+	</body>
+
+</html>

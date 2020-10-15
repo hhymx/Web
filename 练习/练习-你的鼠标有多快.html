@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+				user-select: none;/*不能选中文字*/
+			}
+			#bu1{
+				height: 50px;
+				width: 100px;
+				text-align: center;
+				position: absolute;
+				top: 60px;
+				left: 45%;
+			}
+			.div1{
+				width: 180px;
+				height: 100px;
+				padding-top: 20px;
+				padding-left: 20px;
+				background-color: #FF8C00;
+				position: absolute;
+				top: 150px;
+				left: 200px;
+			}
+			.div2{
+				width: 800px;
+				height: 500px;
+				border: solid 3px black;
+				position: absolute;
+				top: 150px;
+				left: 400px;
+			}
+		</style>
+		<script type="text/javascript">window.onload=function(){
+			var bu1=document.getElementById("bu1");
+			var p1=document.getElementById("p1");
+			var p2=document.getElementById("p2");
+			var score=0;//得分
+			var miss=0;//失分
+			
+			bu1.onclick=function(){
+				bu1.value="游戏进行中";
+				imgc();
+				bu1.disabled=true;////按钮禁用了，如果要重新开启按钮，则disabled=false;
+				if(miss>=3){	
+					miss=0;
+					score=0;
+					p1.innerHTML="得分："+ miss+"分";
+					p2.innerHTML="失分："+ miss+"分";
+				}
+			}
+			function imgc(){
+				var i= Math.round(Math.random()*750+25);//随机位置
+				var topx=0;//下落
+				var div2=document.getElementsByClassName("div2")[0]; 
+				var imgx=document.createElement("img");//生成img图片 
+				imgx.src = "img/"+Math.round(Math.random()*3+1)+".gif";//随机图片
+				imgx.style.position="relative";
+				imgx.style.left=i+"px";//随机位置
+				imgx.style.draggable=false;//禁止拖动图片
+				imgx.style.cursor="pointer";//鼠标变成手
+				div2.appendChild(imgx); //添加到div里面
+				var time=setInterval(function() {
+					topx+=5;//下落速度
+					imgx.style.top=topx+"px";
+					if (topx>=475) {//图片到底
+						clearInterval(time);//停止定时器
+						imgx.src = "img/51.gif";
+						p2.innerHTML="失分："+ ++miss+"分";//改变失分
+						setTimeout(function() {
+							div2.removeChild(imgx);//删除	
+							if(miss==3){
+								alert("充值5块继续游戏");
+								bu1.value="重新游戏";
+								bu1.disabled=false;
+							}else{
+								imgc();
+							}
+						}, 200);	
+					}
+				}, 50); 
+				imgx.onclick=function(){//点击图片
+					imgx.src = "img/52.gif";
+					imgx.style.left=i-10+"px";//左右抖
+					setTimeout(function() {
+						imgx.style.left=i+10+"px";
+						setTimeout(function() {
+							imgx.style.left=i+"px";
+							setTimeout(function() {
+								div2.removeChild(imgx);//删除
+								clearInterval(time);//停止定时器
+								p1.innerHTML="得分："+ ++score+"分";//改变得分
+								imgc();//生成下一个
+							}, 100);
+						}, 100); 
+					}, 100); 	
+				}
+			}
+
+						
+		}
+		</script>
+	</head>
+	<body>
+		<input type="button" id="bu1" value="开始游戏" />
+		<div class="div1">
+			<p id="p1" style="font-size: 30px;">得分：0分</p>
+			<p id="p2" style="font-size: 30px;">失分：0分</p>
+		</div>
+		<div class="div2">
+			
+		</div>
+	</body>
+</html>

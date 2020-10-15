@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.di2{
+				height: 20px;
+				width: 300px;
+				margin: 5px;
+			}
+			.div3{
+				width:400px;		
+			}
+			.div3 div{
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				float: left;
+			}
+			#div3_1{
+				background-color: #000000;
+				width: 220px;
+				height: 220px;
+			}
+			img{
+				width: 30px;
+				cursor: pointer;
+				vertical-align: top;
+			}
+		</style>
+		<script type="text/javascript">
+			/* 
+			var box=document.getElementById("box"); //获取 id 为 box 的元素节点; 如果不存在，则返回 null。
+			document.getElementsByTagName("li");//获取所有 li 元素，返回数组   
+			document.getElementsByTagName("li")[0];  //获取第一个 li 元素
+			document.getElementsByTagName("li").item(0)  //获取第一个 li 元素，HTMLLIElement 
+			document.getElementsByTagName("li").length; //获取所有 li 元素的数目
+			document.getElementsByName("n")[0];//方法可以获取相同名称(name="n")的元素，返回一个对象数组 
+			document.getElementsByClassName("box")[0];//方法可以获取相同类名的元素，返回一个对象数组
+			document.querySelectorAll(".box");	//获取所有class=“box”的节点，返回的是数组
+			document.querySelector("div");//通过标签名称或者class或者id获取元素节点,返回第一个
+			
+			var list = document.querySelector(".list");//.获取子元素
+			var oli = list.querySelectorAll("li");//在已获取nav节点情况下，获取子元素a的所有节点，返回的是数组
+			/////////////////////
+			<div id="box">
+			<img src="images/1.jpg">
+			<img src="images/2.jpg">
+			<img src="images/3.jpg">
+			</div>
+			var oBox = document.getElementById("box");
+			var aImg = oBox.getElementsByTagName("img");//通过oBox元素节点, 获取其子元素节点img
+			//////////////////////////////////
+			var box=document.getElementById('box');//获取某一个元素节点
+			box.getAttribute('id'); //获取元素的 id值(box)	 //box.id; (点语法)
+			box.getAttribute('class');//获取元素的class值 	//box.className'; (点语法)
+			box.getAttribute(bbb);//获取元素的自定义属性值(不可以使用点语法)
+			参数：属性名和值。如果属性本身已存在，那么就会被覆盖。
+			box.setAttribute('align','center');//设置属性和值 
+			box.setAttribute('bbb','ccc');//设置自定义的属性和值
+			box.removeAttribute('style');//移除属性
+			////////////////////////////
+			<div id="box"> 
+  			 <span style="color:red">test1</span> test2 
+			</div>
+			box.innerHTML://从对象的起始位置到终止位置的全部内容,包括Html标签。上例中的box.innerHTML的值也就是:“<span style="color:red">test1</span> test2 ”。
+			box.innerText://从起始位置到终止位置的内容, 但它去除Html标签.上例中的text.innerTest的值也就是:“test1 test2”, 其中span标签去除了
+			box.outerHTML://除了包含innerHTML的全部内容外, 还包含对象标签本身。上例中的text.outerHTML的值也就是:<div id="box"><span style="color:red">test1</span> test2</div>
+			////////////////////////////////////////////////////////////////////////
+			attributes属性: 返回该元素节点的属性节点集合。
+			box.attributes //[object NamedNodeMap]
+			box.attributes.length; //返回属性节点个数 
+			box.attributes[0]; //[object Attr], 返回第一个属性节点 
+			box.attributes[0].nodeType; //1为元素节点，2为属性类型，3为文本节点 
+			box.attributes[0].nodeName; //返回属性名称 
+			box.attributes[0].nodeValue; //返回属性值 
+			box.attributes["id"]; //返回属性名称为id的节点
+			box.attributes["id"].nodeValue; //返回属性名称为id的值
+			/////////////
+			childNodes: 子节点集合
+			box.firstChild.nodeValue //获取第一个子节点的文本内容，// childNodes[0]；
+			box.lastChild.nodeValue //获取最后一个子节点的文本内容，// childNodes[box.childNodes.length- 1]。
+			box.parentNode.nodeName //获取父节点的标签名 
+			/////////////
+			document.write("<p>这是一个段落！</p>"); //输出一个p标签
+			///////////////////
+			var box=document.getElementById("box"); //获取某一个元素节点
+			var p=document.createElement("p"); //创建一个新元素节点<p>
+			p.innerHTML = "hello word";//设置p标签内容
+			p.style.color="azure";//设置p标签颜色
+			box.appendChild(p); //把新元素节点<p>添加box节点的子节点末尾
+			box.parentNode.replaceChild(p, div);//通过父节点调用, p替换了div
+			box.parentNode.removeChild(div); //通过父节点调用, 来删除父元素的子节点
+
+			 */
+			window.onload=function() { //加载 html 后执行      
+				var in1=document.getElementById("in1");
+				var in2=document.getElementsByClassName("in2")[0];
+				var in3=document.getElementsByTagName("input")[2];
+				var in4=document.getElementsByName("in4")[0];
+				var in5=document.querySelectorAll(".in5")[0];
+				document.querySelector(".bu").onclick=function(){
+					console.log(in1.value+in2.value+in3.value+in4.value+in5.value);	
+				}
+				////////////////////////////////////////////////////
+				var di2=document.querySelectorAll(".di2");
+				var boo=true;
+				setInterval(function() {
+					if (boo) {
+						boo=false;
+						di2[0].style.backgroundColor="red";
+						di2[1].style.backgroundColor="blue";
+						di2[2].style.backgroundColor="red";
+						di2[3].style.backgroundColor="blue";
+					} else{
+						boo=true;
+						di2[0].style.backgroundColor="blue";
+						di2[1].style.backgroundColor="red";
+						di2[2].style.backgroundColor="blue";
+						di2[3].style.backgroundColor="red";
+					}
+				}, 10000);//clearInterval(this); //关闭定时器
+				//////////////////////////////////////////
+				var di3_1=document.getElementById("div3_1");
+				for(var i=0;i<5;i++)
+					document.getElementsByName("na3")[i].onclick=function(){
+						di3_1.style.backgroundColor=this.style.backgroundColor;
+					}
+ 			/////////////////////////////////////////////
+ 			//在输入框中输入内容后,点击保存则在表格末尾添加一条记录, 点击删除则会删除对应行的记录
+				var btn = document.querySelector("button");
+				var ov = document.querySelectorAll("input");
+				var tab = document.querySelector("table");
+				btn.onclick = function(){
+					var tr0 = document.createElement("tr");
+					var th1 = document.createElement("th");
+					var th2 = document.createElement("th");
+					var th3 = document.createElement("th");
+					var th4 = document.createElement("th");
+					th1.innerHTML = ov[0].value;
+					th2.innerHTML = ov[1].value;
+					th3.innerHTML = ov[2].value;
+					th4.innerHTML = '删除';
+					th4.className = "active";
+					
+					tr0.appendChild(th1);
+					tr0.appendChild(th2);
+					tr0.appendChild(th3);
+					tr0.appendChild(th4);
+					tab.appendChild(tr0);
+					
+					th4.onclick = function(){
+						tab.removeChild(tr0);
+					}
+				}
+				
+				/////////////////////////////--------五星好评----------
+				var div5 = document.getElementById("div5");//获取div5的节点
+				var oimg = div5.querySelectorAll("div");//获取div5下面的所有的div节点
+				var arr = ["非常差","差","一般","好","非常好"];
+				for(var i=0;i<oimg.length;i++){
+					oimg[i].index = i;
+					oimg[i].onclick = function(){
+						var n1 = this.index%5;
+						var div5 = this.parentNode.querySelectorAll("div");
+						for(var j=0;j<div5.length;j++){
+							div5[j].style.backgroundColor = "#FFD700";//默认
+						}
+						for(var j=0;j<=n1;j++){
+							div5[j].style.backgroundColor = "#FF8C00";//点击
+						}
+						this.parentNode.querySelector(".s1").innerHTML = arr[n1];
+					}
+				}
+		}</script>
+	</head>
+	<body>
+		<div>
+			<h2>1,通过getElementById, getElementsByClassName,getElementsByTagName，getElementsByName，querySelectorAll，querySelector ，6种获取节点的方式实现</h2>
+			<input type="text" id="in1" placeholder="姓名" />
+			<input type="text" class="in2" placeholder="性别" />
+			<input type="text" placeholder="年龄" />
+			<input type="text" name="in4" placeholder="专业" />
+			<input type="text" class="in5" placeholder="兴趣" />
+			<input type="button" id="bu" class="bu" value="保存" />
+		</div>
+		<div>
+			<h2>2、隔行变色（颜色1s切换一次，红变蓝，蓝变红）</h2>
+			<div class="di2"></div>
+			<div class="di2"></div>
+			<div class="di2"></div>
+			<div class="di2"></div>
+		</div>
+		
+		<div >
+			<h2>3、点击小图，小图出现红色边框, 且大图改变。</h2>
+			<div class="div3">
+				<div id="div3_1"></div>
+				<div name="na3" style="background-color: #8A2BE2;"></div>
+				<div name="na3" style="background-color: #00FFFF;"></div>
+				<div name="na3" style="background-color: #F0F8FF;"></div>
+				<div name="na3" style="background-color: #FFD700;"></div>
+				<div name="na3" style="background-color: #FF0000;"></div>
+			</div>
+		</div>
+		
+		<div style="clear: both;">
+			<h2>4,在输入框中输入内容后,点击保存则在表格末尾添加一条记录, 点击删除则会删除对应行的记录</h2>
+			<input type="text" placeholder="ID"/>
+			<input type="text" placeholder="名字"/>
+			<input type="text" placeholder="电话"/>
+			<button>保存</button>
+			<table width="400" border="1">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Tel</th>
+					<th>操作</th>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="div5">
+			<h2>5,五星好评</h2>
+			<ul class="list" style="list-style: none;margin: 10px;"><!--list-style: none去掉列表符号-->
+			<li style="clear: both;">
+				<span>服务态度：</span>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<span class="s1">一般</span>
+			</li>
+			<li style="clear: both;">
+				<span>服务态度：</span>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<span class="s1">一般</span>
+			</li>
+			<li style="clear: both;">
+				<span>服务态度：</span>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<div style="height: 30px;width: 30px;background-color: #FFD700;margin: 3px;display: inline-block;"></div>
+				<span class="s1">一般</span>
+			</li>
+		</ul>
+		</div>
+	</body>
+</html>

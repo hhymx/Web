@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			.dv{
+				margin: 20px auto;
+				background-color: rgb(253,221,179);
+				width: 500px;
+				padding: 10px;
+			}
+			input{
+				background-color: red;
+				height: 30px;
+				width: 60px;
+				/*border: none;*/
+				/*	line-height: 25px;*/
+				border-radius:10px 10px 10px 10px;/*圆角*/
+				margin-left: 300px;
+				/*display: inline-block;
+				position: relative;
+				right: -100px;
+				bottom: 5px;*/
+				
+			}
+			p{
+				margin: 20px;
+				text-indent: 20px;/*首行缩进*/
+			}
+			span{
+				margin-left: 10px;
+				font-size: 20px;
+			}
+		</style>
+		<script type="text/javascript">window.onload=function() { 
+			var p1=document.getElementById("p1");
+			var bu1=document.getElementById("bu1");
+			bu1.onclick=function(){
+				if (bu1.value=="展开") {
+					p1.innerHTML="Tampermonkey是最受欢迎的用户脚本管理器，每周有超过1000万用户。它可用于Microsoft Edge、Chrome、Safari、Opera Next和Firefox。Tampermonkey使管理用户脚本变得非常容易，并提供了一些功能，如对运行脚本的清晰概述、内置编辑器、基于ZIP的导入和导出（Google Drive、Dropbox、OneDrive、WebDAV）、自动更新检查以及基于浏览器和云存储的同步。最后兼容Greasemonkey到3.x版本。要获得完整的概述，请查看常见问题解答或只安装TM。;)感谢您使用Tampermonkey。:)"
+					bu1.value="收起";
+				} else{
+					p1.innerHTML="Tampermonkey是最受欢迎的用户脚本管理器，每周有超过1...";
+					bu1.value="展开";
+				}	
+			}
+				
+			var p2=document.getElementById("p2");
+			var bu2=document.getElementById("bu2");
+			bu2.onclick=function(){
+				if (bu2.value=="展开") {
+					p2.innerHTML="Tampermonkey是最受欢迎的用户脚本管理器，每周有超过1000万用户。它可用于Microsoft Edge、Chrome、Safari、Opera Next和Firefox。Tampermonkey使管理用户脚本变得非常容易，并提供了一些功能，如对运行脚本的清晰概述、内置编辑器、基于ZIP的导入和导出（Google Drive、Dropbox、OneDrive、WebDAV）、自动更新检查以及基于浏览器和云存储的同步。最后兼容Greasemonkey到3.x版本。要获得完整的概述，请查看常见问题解答或只安装TM。;)感谢您使用Tampermonkey。:)"
+					bu2.value="收起";
+				} else{
+					p2.innerHTML="";
+					bu2.value="展开";
+				}	
+			}
+		}</script>
+	</head>
+	<body>
+		<div class="dv">
+			<h2>1、什么是Tampermonkey</h2>
+			<p id="p1">Tampermonkey是最受欢迎的用户脚本管理器，每周有超过1...</p>
+			<span>2020-20-20</span>
+			<input type="button" id="bu1" value="展开" />
+		</div>
+		
+		<div class="dv">
+			<h2>1、什么是Tampermonkey</h2>
+			<p id="p2"></p>
+			<span>2020-20-20</span>
+			<input style="right: 2px;" type="button" id="bu2" value="展开" />
+		</div>
+	</body>
+</html>

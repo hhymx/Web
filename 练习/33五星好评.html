@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.list{
+				list-style: none;
+				margin: 100px;
+			}
+			span{
+				font-size: 30px;
+			}
+			img{
+				width: 30px;
+				cursor: pointer;
+				vertical-align: top;
+			}
+			li{
+				clear: both;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oimg = document.querySelectorAll("img");
+				var arr = ["非常差","差","一般","好","非常好"];
+				for(var i=0;i<oimg.length;i++){
+					oimg[i].index = i;
+					oimg[i].onclick = function(){
+						var n1 = this.index%5;
+						var img1 = this.parentNode.querySelectorAll("img");
+						console.log(n1);
+						for(var j=0;j<img1.length;j++){
+							img1[j].src = "img/x1.png";
+						}
+						for(var j=0;j<=n1;j++){
+							img1[j].src = "img/x2.png";
+						}
+						this.parentNode.querySelector(".s1").innerHTML = arr[n1];
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul class="list">
+			<li>
+				<span>服务态度：</span>
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<span class="s1">一般</span>
+			</li>
+			<li>
+				<span>服务态度：</span>
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<span class="s1">一般</span>
+			</li>
+			<li>
+				<span>服务态度：</span>
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<img src="img/x1.png" />
+				<span class="s1">一般</span>
+			</li>
+		</ul>
+	</body>
+</html>
