@@ -6,7 +6,7 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<style type="text/css">
-			#di1{
+			.di1{
 				width: 0px;
 				height: 0px;
 				background-color:#00FFFF ;
@@ -14,7 +14,7 @@
 				overflow: hidden;
 				position: fixed;
 				right: 0;
-				bottom: 0;
+				top: 0;
 			}
 		</style>
 		<script type="text/javascript">
@@ -45,9 +45,10 @@
 			open('http://www.baidu.com', '_blank', 'width=400,height=400,top=200,left=200' );
 			/////////////////////////
 			setTimeout()   指定的时间过后执行代码
-			写法一//直接传入函数名即可:function box(){
+			写法一//直接传入函数名即可:
+			function box(){
 				alert(“hello”);
-				}
+			}
 			setTimeout(box, 1000); 	 
 			写法二//推荐做法:setTimeout(function(){
 				alert(“hello”);
@@ -60,27 +61,35 @@
 			window.onscroll = function() {
 				//滚动事件: 实时获取距离顶部的距离
 				谷歌不支持:document.documentElement.scrollTop;//document.body.scrollTop: 支持谷歌
-				var scrollTop = document.documentElement.scrollTop|| document.body.scrollTop;	
+				var scrollTop = document.documentElement.scrollTop|| document.body.scrollTop;
+				var b1 = document.body.offsetHeight;//获取body高度
+				var t2 = box1.offsetTop;//获取box1位置
+				var t3 = document.documentElement.clientHeight;//获取浏览器高度
 			}
 			//////////////////////////////////
 			*/	
 			window.onload=function(){
-				var di1=document.getElementById("di1");
+				var di1=document.getElementsByClassName("di1")[0];//获取class的节点，返回的是数组
+				var di2=document.getElementById("di2");
+				var scrollTop;
 				window.onscroll = function() {
-					di1.style.height=600+"px";
-					di1.style.width=600+"px";
-					
+					scrollTop = document.documentElement.scrollTop|| document.body.scrollTop;	
+					if(scrollTop>200){
+						di1.style.height=100+"px";
+						di1.style.width=100+"%";
+					}else{
+						di1.style.height=0+"px";
+						di1.style.width=0+"px";
+					}
+					console.log(document.getElementsByClassName("di1"));
 				}
 			}
 		</script>
 	</head>
 
 	<body>
-		<div id="di1">
-			<p style="font-size: 300px;">鬼</p>
-		</div>
-		<div style="width: 20px;height: 1000px;margin: auto;">
-			<p>这是一座桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥桥 | | | | | | | | | | | | | | | 鬼</p>
+		<div class="di1"></div>
+		<div id="di2" style="width: 20px;height: 1800px;margin: auto;background-color: #00FFFF;">
 		</div>
 	</body>
 
