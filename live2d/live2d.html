@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>Live2D</title>
+   	<link rel="stylesheet" href="assets/live2d-widget/live2d.css" />
+</head>
+<body>
+<div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+    <div class="hide-button">隐藏</div>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="assets/live2d-widget/live2d.js"></script>
+<script type="text/javascript" src="assets/live2d-widget/message.js"></script>
+<script src="js/jquery-ui.js"></script><!--拖动div-->
+
+<script type="text/javascript">
+    // loadlive2d("live2d", "https://x.github.io/live2d/model.json");//model.json和模型等放在服务器网站上
+	loadlive2d("live2d", "assets/model2d/33/model.2016.xmas.2.json")
+	$("#landlord").draggable();//移动div
+	
+</script>
+</body>
+</html>

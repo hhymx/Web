@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.xuehua{
+				position: absolute;
+				top: 0px;
+				left: 100px;
+				z-index: 10;
+				opacity: 0.8;/*透明度*/
+			}
+			body{
+				background:url(img/background.jpg) no-repeat scroll top left;
+			}
+		</style>
+		<script src="../js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function () {
+				setInterval(function(){
+					var img = $("<img />");
+					img.addClass("xuehua");
+					img.css("left",Math.round(Math.random()*$(window).width()-20));//随机位置
+					img.attr("src","img/snowflake"+Math.round(Math.random()*18+1)+".png");
+					$("body").append(img);//添加
+					
+					img.animate({
+						top:500//下落位置
+					},2000,"linear",function () {
+						img.remove();//删除
+					});
+				},1000);
+			})
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

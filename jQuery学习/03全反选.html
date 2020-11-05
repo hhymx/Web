@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+	
+		</style>
+		<script src="js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function () {
+				var inp=$("li input");
+				$("#all").click(function(event) {			
+					if ($("#all")[0].checked) {
+						for (var i=0;i<inp.length;i++) {
+							inp[i].checked=true;
+						}
+						$("#back")[0].checked=false;
+					} else{
+						for (var i=0;i<inp.length;i++) {
+							inp[i].checked=false;
+						}
+					}
+				}); 
+				
+				$("#back").click(function () {			
+					if ($("#back").prop("checked")) {
+						$("#all").prop("checked",false);
+					}
+					$("#in1").prop("checked",!$("#in1").prop("checked"));
+					$("#in2").prop("checked",!$("#in2").prop("checked"));
+					$("#in3").prop("checked",!$("#in3").prop("checked"));
+					$("#in4").prop("checked",!$("#in4").prop("checked"));
+					$("#in5").prop("checked",!$("#in5").prop("checked"));
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li><input type="checkbox" id="in1" name="" />1</li>
+			<li><input type="checkbox" id="in2" name="" />2</li>
+			<li><input type="checkbox" id="in3" name="" />3</li>
+			<li><input type="checkbox" id="in4" name="" />4</li>
+			<li><input type="checkbox" id="in5" name="" />5</li>
+		</ul>
+		<input type="checkbox" name="" id="all" />全选
+		<input type="checkbox" name="" id="back" />反选
+	</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box1{
+				height: 100px; 
+				width: 100px;
+				position: absolute;
+				background-color: #FFD700;
+			}
+		</style>
+		<script type="text/javascript">
+			/*
+			 使用开启定时器setInterval() 和 清除定时器clearInterval()来控制运动, 
+			 其中setInterval()方法可以让物体动起来, 而clearInterval()方法可以让运动停止;
+			 在定时器过程中不断更改需要改变的值(如: 位置left/top, 宽高width/height,
+			 透明度opacity:0.9,filter:alpha(opacity=90)等)
+			*/
+			document.addEventListener("DOMContentLoaded",function(){
+				var box1=document.querySelector(".box1");
+				var bu1=document.querySelector(".bu1");
+				bu1.onclick=function(){
+   		 		//	color(box1,1,0,5);
+   		 			buffer(500,box1,0.5);
+   		 			//elastic(500,10,box1);
+				}
+				
+			})
+			function getstyle(obj,attr) {//获取页面元素样式,obj节点，attr要获取的样式
+        		if(window.getComputedStyle) { 
+        			//支持IE9+, 谷歌, 火狐..	
+        			//var style = window.getComputedStyle("元素", "伪类")[样式];
+        			return getComputedStyle(obj,null)[attr];
+         		}else{
+					return obj.currentStyle[attr]; //支持IE8-
+        	   	}
+			}
+			function buffer (end,obj,timer) {//缓冲函数
+				var start = 10;
+				var speed=10;
+				var time = setInterval(function() {
+					start = obj.offsetLeft;
+					speed = (end - start) / (timer*10); //速度
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					console.log(start+" "+end+" "+speed)
+					if(start == end) {
+						clearInterval(time); //停止定时器
+					} else {
+						obj.style.left = start + speed + "px";
+					}
+				}, 100);
+			}
+		function color(obj,start,end,timer) {//渐变颜色
+			obj.style.opacity = start;
+			var speed=(end-start)/(timer*10);
+				var sty=1;
+				var time=setInterval(function(){	
+					sty=Number(getstyle(obj,"opacity"));
+					sty=Math.round(sty*1000)/1000;
+					//console.log(sty+"+"+speed+"="+(sty+speed));
+ 		 			if (sty==end) {
+ 		 				clearInterval(time);
+ 		 			} else{
+ 		 				(sty+speed)<0 ? obj.style.opacity = 0 : obj.style.opacity = sty+speed;
+ 		 				obj.style.filter="alpha(opacity="+sty+speed+")";
+ 		 			}
+				},100);	
+			}
+			function elastic(end,iSpeed,obj) {//弹性运动 : 让物体进行弹性运动;
+				//end：结束位置,iSpeed：速度，obj：目标
+				var timer = setInterval(function(){
+					var start=obj.offsetLeft;
+					iSpeed += (end - start) / 5;
+					iSpeed *= 0.7;  //摩擦系数
+					obj.style.left = start +iSpeed +"px"; 
+					//判断是否到临界值，当速度很小时已经当前值接近目标值时，
+					if(Math.abs(iSpeed) < 1 && Math.abs(end - start) < 1){	//if(start==end){
+						obj.style.left = end + "px";  //left = 目标值		
+						clearInterval(timer);
+					}
+				},100)
+			}
+		</script>
+	</head>
+	<body>
+		<button class="bu1">开始运动</button>
+		<div class="box1"></div>
+	</body>
+</html>

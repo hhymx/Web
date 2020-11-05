@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			.box1{
+				height: 300px;
+				width: 500px;
+				border: solid 1px black;
+				background-color: #FFD700;
+				position: absolute;
+				overflow: hidden;/*溢出隐藏*/
+				top: 50px;
+				left: 30%;
+			}
+			.yuan{
+				height: 40px;
+				width: 110px;
+				position: absolute;
+				top: 250px;
+				right: 10px;
+				z-index: 10px;
+			}
+			.yuan div{
+				display: inline-block;
+				height: 12px;
+				width: 12px;
+				margin-top: 10px;
+				margin-left:10px ;
+				border-radius: 100%;
+				border: solid 4px white;
+			}
+			.left{
+				height: 0px; 
+				width: 0px;
+				border: solid 20px rgba(0,0,0,0);
+				border-right:solid 10px white;
+				position: absolute;
+				top: 120px;
+				left: -10px;
+				z-index: 10;
+			}
+			.left:hover{
+				border: solid 20px rgba(0,0,0,0.2);
+				border-right:solid 10px white;
+				cursor: pointer;
+			}
+			.right{
+				height: 0px; 
+				width: 0px;
+				border: solid 20px rgba(0,0,0,0);
+				border-left:solid 10px white;
+				position: absolute;
+				top: 120px;
+				left: 480px;
+				z-index: 10;
+			}	
+			.right:hover{
+				border: solid 20px rgba(0,0,0,0.2);
+				border-left:solid 10px white;
+				cursor: pointer;
+			}
+			#box1_1{
+				height: 300px;
+				width:2000px ;
+				list-style: none;
+				position: absolute;
+				left: 0px;
+			}
+			#box1_1 img{
+				height: 100%;
+				width:500px ;
+				float: left;
+			}
+		</style>
+		<script src="js/轮播图.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded",function () {
+				var box=document.getElementById("box");
+				var box1_1=document.getElementById("box1_1");
+				var yuan1=document.getElementById("yuan1").querySelectorAll("div");
+				var left1=document.getElementById("left1");
+				var right1=document.getElementById("right1");
+				yuan1[0].style.backgroundColor="red";
+				var yx=0;//圆点
+				var lx=0;//图片位置
+				var timer1=setInterval(tlun1,4000);
+				
+				function tlun1() {						
+					yx=yuandian(yuan1,++yx,3,"red");
+					
+					if (lx==-1500) {
+						box1_1.style.left=0+"px";
+						lx=0;		
+					}
+					lx=lx-500;
+					buffer(lx,box1_1,0.5);
+				}
+				left1.onclick=function () {	
+					if (lx==0) {
+						lx=-1500;	
+						box1_1.style.left=-1500+"px";
+					}
+					lx=lx+500;
+					buffer(lx,box1_1,0.5);
+					yx=yuandian(yuan1,--yx,3,"red");
+				}
+				right1.onclick=function () {	
+					tlun1()
+				}
+				for (var j=0;j<yuan1.length;j++) {
+					yuan1[j].index=j;
+					yuan1[j].onclick=function(){
+						for (var i=0;i<yuan1.length;i++) {
+							yuan1[i].style.backgroundColor="";
+						}
+						yuan1[this.index].style.backgroundColor="red";
+						buffer(-this.index*500,box1_1,0.5);
+					}
+				}
+				box.onmouseover = function() {//鼠标移入
+        			clearInterval(timer1);
+				}
+				box.onmouseout = function() {//鼠标移出
+        			timer1=setInterval(tlun1,4000);
+				} 
+			})
+		</script>
+		<div class="box1" id="box">
+			<div class="left" id="left1"></div>
+			<div class="right" id="right1"></div>
+			<div id="box1_1">
+				<img id="img1" src="img/L0.jpg" />
+				<img id="img2" src="img/L1.jpg" />
+				<img id="img3" src="img/L2.jpg" />	
+				<img id="img4" src="img/L0.jpg" />
+			</div>	
+			<div class="yuan" id="yuan1"><div></div><div></div><div></div></div>
+		</div>
+		<br />
+		<div id="divx" style="position: absolute;top: 400px;background-size: 100% 100%;left: 30%;overflow: hidden;">
+			<div class="left" id="left2"></div>
+			<div class="right" id="right2"></div>
+			<img id="imgx" src="img/L0.jpg" alt="" width="500px" height="300px"/>
+			<div class="yuan" id="yuan2"><div></div><div></div><div></div></div>
+		</div>
+		<script type="text/javascript">
+			var divx=document.getElementById("divx");
+			var imgx=document.getElementById("imgx");
+			var yuan2=document.getElementById("yuan2").querySelectorAll("div");
+			var left2=document.getElementById("left2");
+			var right2=document.getElementById("right2");
+			yuan2[0].style.backgroundColor="red";
+			var x=0;
+			left2.onclick=function () {
+				x=yuandian(yuan2,--x,3,"red");
+				imgx.src="img/L"+ x+".jpg";			
+				color(imgx,0.5,1,0.5);
+			}
+			right2.onclick=function(){
+				tlun();
+			}
+			for (var j=0;j<yuan2.length;j++) {
+				yuan2[j].index=j;
+				yuan2[j].onclick=function(){
+					for (var i=0;i<yuan2.length;i++) {
+						yuan2[i].style.backgroundColor="";
+					}
+					imgx.src="img/L"+ this.index+".jpg";
+					yuan2[this.index].style.backgroundColor="red";
+				}
+			}
+			var timer2=setInterval(tlun,2000);
+			function tlun(){
+				divx.style.backgroundImage="url(img/L"+x+".jpg)";
+				x=yuandian(yuan2,++x,3,"red");
+				imgx.src="img/L"+ x+".jpg";
+				color(imgx,0.25,1,0.5);	
+			}
+			divx.onmouseover = function() {//鼠标移入
+        		clearInterval(timer2);
+			}
+			divx.onmouseout = function() {//鼠标移出
+        		timer2=setInterval(tlun,2000);
+			} 
+		</script>
+	</body>
+</html>

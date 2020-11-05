@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			.box1{
+				width: 200px;
+				height: 200px;
+				background: blue;
+				overflow: hidden;
+				position: relative;
+				padding: 5px;
+				border: solid 1px black;
+			}
+			.box2{
+				width: 100px;
+				height: 100px;
+				background: green;
+				position: absolute;
+				top: 50px;
+				left: 50px;
+				
+			}
+			body{
+				height: 5000px;
+				width: 5000px;
+			}
+		</style>
+		<script src="js/jquery-3.4.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//访问匹配元素的样式属性。
+				console.log($(".box").css("height"));
+				$(".box").css("height",'200px');
+				$(".box").css({"height":'200px',"width":"200px"});
+				
+				//获取匹配元素在当前视口的相对偏移。
+				console.log($(".box").offset().left);
+				console.log($(".box").offset().top);
+				
+				//获取匹配元素相对父元素的偏移。
+				console.log($(".box2").position().left);
+				console.log($(".box2").position().top);
+				
+				$(window).scroll(function(){
+					//获取匹配元素相对滚动条顶部的偏移
+					console.log($("html,body").scrollTop());
+					
+					//获取匹配元素相对滚动条左侧的偏移。
+					console.log($("html,body").scrollLeft());
+				})
+				
+				//得匹配元素当前计算的高度值（px）。
+				console.log($(".box1").height());
+				
+				//取得第一个匹配元素当前计算的宽度值（px）。
+				console.log($(".box1").width());
+				
+				//获取第一个匹配元素内部区域高度（包括补白、不包括边框）。
+				console.log($(".box1").innerHeight());
+				
+				//获取第一个匹配元素内部区域宽度（包括补白、不包括边框）。
+				console.log($(".box1").innerWidth());
+				
+				//获取第一个匹配元素外部高度（默认包括补白和边框）。
+				console.log($(".box1").outerHeight());
+				
+				//获取第一个匹配元素外部宽度（默认包括补白和边框）。
+				console.log($(".box1").outerWidth());
+			})
+		</script>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="box1">
+			<div class="box2"></div>
+		</div>
+	</body>
+</html>

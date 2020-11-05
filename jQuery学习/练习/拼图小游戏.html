@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.img1{
+				width: 300px;
+				display: block;	
+				margin: 0px auto;			
+			}
+			.obox{
+				width: 300px;
+				height: 300px;
+				border: solid 1px black;
+				background: white;
+				margin: 30px auto;
+				position: relative;
+			}
+			.active{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100px;
+				height: 100px;
+				border: solid 1px white;
+				box-sizing: border-box;
+				background: url(../img/cat_face.jpg) 0px 0px/300px;
+			}
+		</style>
+		<script src="../js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var arr =[];
+				for(var i=0;i<3;i++){
+					for(var j=0;j<3;j++){				
+						var n1 = -j*100;//背景图x坐标
+						var n2 = -i*100;//背景图y坐标
+						var n3 = i*3+j;
+						var obj = {
+							x : n1,
+							y : n2,
+							name : n3
+						}
+						arr.push(obj);
+					}
+				}
+
+				//创建九宫格			
+				for(var i=0;i<3;i++){
+					for(var j=0;j<3;j++){
+						var div1 = $("<div></div");
+						div1.addClass("active");
+						div1.css({"top":i*100,"left":j*100});
+						div1.css({"transition":"all 0.5s linear 0s"});
+						div1.attr("name",arr[i*3+j].name);
+						if(i*3+j==8){
+							div1.css("background","white" );
+							dix[8]=div1;
+						}else{
+							div1.css("background","url(../img/cat_face.jpg) "+arr[i*3+j].x+"px "+arr[i*3+j].y+"px"+"/300px" );		
+						}
+					//	$(".obox").append(div1);
+						div1.click(function () {
+							divx(this);
+						});
+					}
+				}
+				
+				for (var i=0;i<9;i++) {
+			//		$(".obox").append(dix[]);
+					fn(i);
+					
+				}
+				
+				function fn(i1){
+					var x = Math.round(Math.random()*8);
+					var b=false;
+					for (var j=0;j<i1;j++) {
+						if (dixy[j]==x) {
+							b=true;
+						} 
+					}	
+					if (b) {
+						fn();
+					} else{
+						dixy[i1]=x;	
+						console.log(x);
+					}
+				}
+			})
+			var dix=[];
+			var dixy=[];
+			function divx (t) {
+				var top0=dix[8].position().top;
+				var left0=dix[8].position().left;
+				var topx=$(t).position().top;
+				var leftx=$(t).position().left;
+				//console.log(topx+" "+top0+" "+leftx+" "+left0);
+				if (topx==top0&(Math.abs(leftx-left0)==100)) {
+					$(t).css({"top":top0,"left":left0});
+					dix[8].css({"top":topx,"left":leftx});			
+				} else if(leftx==left0&(Math.abs(topx-top0)==100)){
+					$(t).css({"top":top0,"left":left0});
+					dix[8].css({"top":topx,"left":leftx});
+				}
+				
+				//
+				var str="";
+				for (var i=0;i<9;i++) {
+					str+=$(".obox div").eq(i).attr("name");
+				}
+				console.log(str);
+			}
+		</script>
+	</head>
+	<body>
+		<img class="img1" src="../img/cat_face.jpg" />
+		<div class="obox"></div>
+		<p>已经走0步</p>
+	</body>
+</html>

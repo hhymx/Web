@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$(function(){
+				$.ajax({
+					type:"get",
+					url:"js/10.json",
+					async:true,
+					success:function(res){
+						$(res).each(function(idx,item){
+							if(idx==0){
+								console.log(item.name+item.age);
+							}
+						})
+					},
+					error:function(){
+						console.log("请求失败")
+					}
+				});
+			})
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//获取第N个元素
+				$(".list li").eq(1).css("color","red");
+				
+				//检查当前的元素是否含有某个特定的类，如果有，则返回true。
+				console.log($(".list").hasClass("list"));
+				
+				//删除与指定表达式匹配的元素
+				$(".list li").not(".li3").css("font-size","20px");
+			
+				//取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合。
+//				$(".obox").children("span").css("color","red");
+			
+				//搜索所有与指定表达式匹配的元素。这个函数是找出正在处理的元素的后代元素的好方法。
+				$(".obox").find("span").css("color","red");
+			
+				//取得一个包含着所有匹配元素的唯一父元素的元素集合。
+				console.log($(".li3").parent());
+				
+				//取得一个包含着所有匹配元素的祖先元素的元素集合（不包含根元素）
+				console.log($(".li3").parents("body"));
+				
+				//取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。
+				console.log($(".li3").siblings(".li5"));
+			})
+		</script>
+	</head>
+	<body>
+		<ul class="list">
+			<li>列表内容</li>
+			<li>列表内容</li>
+			<li class="li3">列表内容</li>
+			<li >列表内容</li>
+			<li class="li5">列表内容</li>
+		</ul>
+		<div class="obox">
+			<h3>
+				<span>123</span>
+			</h3>
+			<span>456</span>
+		</div>
+	</body>
+</html>

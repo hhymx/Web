@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.obox{
+				width: 400px;
+				height: 250px;
+				border: solid 1px black;
+			}
+			.list li{
+				float: left;
+				width: 25%;
+				list-style: none;
+				text-align: center;
+				background: #ccc;
+				height: 30px;
+				line-height: 30px;
+			}
+			.list li:first-child{
+				background: blue;
+				color: white;
+			}
+			.box1>div{
+				display: none;
+				padding: 20px;
+			}
+			.box1>div:first-child{
+				display: block;
+			}
+		</style>
+		<script src="js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".list li").click(function(){
+					$(this).css({"background":"blue","color":"white"});
+					$(this).siblings("li").css({"background":"#ccc","color":"black"});
+					$(".box1 div").css("display","none");
+					$(".box1 div").eq($(this).index()).css("display","block");
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="obox">
+			<ul class="list">
+				<li>HTML</li>
+				<li>CSS</li>
+				<li>JS</li>
+				<li>JQ</li>
+			</ul>
+			<div class="box1">
+				<div>HTML</div>
+				<div>CSS</div>
+				<div>JS</div>
+				<div>JQ</div>
+			</div>
+		</div>
+	</body>
+</html>

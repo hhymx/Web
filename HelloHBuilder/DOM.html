@@ -42,7 +42,7 @@
 			document.querySelector("div");//通过标签名称或者class或者id获取元素节点,返回第一个
 			
 			var list = document.querySelector(".list");//.获取子元素
-			var oli = list.querySelectorAll("li");//在已获取nav节点情况下，获取子元素a的所有节点，返回的是数组
+			var oli = list.querySelectorAll("li");//在已获取nav节点情况下，获取子元素li的所有节点，返回的是数组
 			/////////////////////
 			<div id="box">
 			<img src="images/1.jpg">
@@ -92,6 +92,7 @@
 			box.appendChild(p); //把新元素节点<p>添加box节点的子节点末尾
 			box.parentNode.replaceChild(p, div);//通过父节点调用, p替换了div
 			box.parentNode.removeChild(div); //通过父节点调用, 来删除父元素的子节点
+			box.removeChild(p); //删除新元素节点
 
 			 */
 			window.onload=function() { //加载 html 后执行      

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 400px;
+				height: 430px;
+				border: solid 1px black;
+				display: inline-block;
+			}
+			.box img{
+				height: 400px;
+				width: 400px;
+			}
+			.box button{
+				margin-left: 160px;
+			}
+		</style>
+		<script src="../js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function () {
+				$("button").click(function (e) {	
+					//获取在可视区位置，整个网页的位置减去滚动条划过去的位置
+					var x=$(this).siblings("img").offset().left-$(document).scrollLeft();
+					var y=$(this).siblings("img").offset().top-$(document).scrollTop();
+					
+					var img1 = $("<img />");
+					img1.css({"position":"fixed","left":x , "top":y});
+					img1.css("width",$(this).siblings("img").width()),
+					img1.css("height",$(this).siblings("img").height());
+					img1.attr("src","../img/1.png");
+					$("body").append(img1);//添加
+					img1.animate({
+						left:$("#gwc").offset().left-$(document).scrollLeft()+25,
+						top:25,
+						width: 0,
+						height: 0
+					},2000,"linear",function () {
+						img1.remove();//删除
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<img src="../img/1.png"/>
+			<button>加入购物车</button>
+		</div>
+		<div class="box">
+			<img src="../img/1.png"/>
+			<button>加入购物车</button>
+		</div>
+		<div class="box">
+			<img src="../img/1.png"/>
+			<button>加入购物车</button>
+		</div>
+		<div class="box">
+			<img src="../img/1.png"/>
+			<button>加入购物车</button>
+		</div>
+		<div class="box">
+			<img src="../img/1.png"/>
+			<button>加入购物车</button>
+		</div>
+		<div class="box">
+			<img src="../img/1.png"/>
+			<button>加入购物车</button>
+		</div>
+		<div class="box">
+			<img src="../img/1.png"/>
+			<button>加入购物车</button>
+		</div>
+		<div class="box">
+			<img src="../img/1.png"/>
+			<button>加入购物车</button>
+		</div>
+		<div class="box">
+			<img src="../img/1.png"/>
+			<button>加入购物车</button>
+		</div>
+		<div class="box">
+			<img src="../img/1.png"/>
+			<button>加入购物车</button>
+		</div>
+		<img id="gwc" style="position: fixed;right: 10px;top: 10px;" src="img/购物车.png"/>
+	</body>
+</html>

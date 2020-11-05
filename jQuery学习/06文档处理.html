@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//创建标签
+				var p1 = $("<p></p>");
+				p1.html("123");
+				//向每个匹配的元素内部追加内容。
+				//$(".box1").append(p1);
+				
+				//在每个匹配的元素之后插入内容。
+				//$(".box1").after(p1);
+				
+				//在每个匹配的元素之前插入内容。
+				//$(".box1").before(p1);
+				
+				//将所有匹配的元素替换成指定的HTML或DOM元素。
+				//$(".box1 h3").replaceWith(p1);
+				
+				//从DOM中删除所有匹配的元素。
+				//$(".box1").remove();
+				
+				//克隆匹配的DOM元素并且选中这些克隆的副本。
+				$(".btn").click(function(){
+					console.log("按钮被点击了");
+				});
+				
+				var btn2 = $(".btn").clone(true);
+				$(".box1").append(btn2);
+			})
+		</script>
+	</head>
+	<body>
+		<div class="box1">
+			<h3>hello word</h3>
+			<button class="btn">按钮</button>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			body{
+				position: relative;
+				background-color: #CCCCCC;
+			}
+			.div1{
+				width: 350px;
+				height: 200px;
+				text-align: center;
+				margin: 100px auto;
+				padding: 30px;
+				position: relative;
+				border-radius:10px 10px 10px 10px;
+				background-color: white;
+			}
+			.csin{
+				display: inline-block;
+				border: solid 2px black;
+				margin-left: -6px;
+				margin-top: 30px;
+				height: 35px;
+				width: 35px;
+				text-align: center;
+				font-size: 30px;
+				outline: medium;
+				caret-color: transparent;
+				
+				/*color:transparent;
+				text-shadow: 0px 0px 0px #333;*/
+			}
+			@keyframes div1{
+				0%{left: -10px;}
+				33%{left: 0px;}
+				66%{left: 10px;}
+				100%{left: 0px;}
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var div1=document.getElementsByClassName("div1")[0];
+				var p1=document.getElementById("p1");
+				var inx=document.querySelectorAll("input");
+				setTimeout(function() {inx[0].focus();}, 1000);	
+				var x=0;
+				window.onkeydown = function() {}
+				window.onkeyup = function(evt) {
+					if (inx[x].value=="") {
+    					if(x>0){
+    						inx[--x].focus();
+    						inx[x].value="";
+    					}
+    				} else if(x<5){
+    					inx[++x].focus();	
+    					p1.innerHTML="&nbsp;";
+    				}else if(inx[5].value!=""){
+    					div1.style.animation="none";
+    					if (inx[0].value=="0"&inx[1].value=="0"&inx[2].value=="0"&inx[3].value=="0") {
+    						alert("密码正确");
+    					} else{
+    						setTimeout(function() {
+    							for (var i=0;i<=5;i++) {
+    								inx[i].value="";	
+    								
+    							}
+    							inx[x=0].focus();
+    							p1.innerHTML="密码错误";
+    							div1.style.animation="div1 0.1s 1";//抖一抖					
+							}, 100);
+    					}			
+    				}
+   				}
+			}
+		</script>
+	</head>
+	<body>	
+		<div class="div1">
+			<span style="float: left;font-size:40px ;margin-top: -20px;">x</span>
+			<p style="margin-top: 30px;font-size: 30px;">输入密码</p>
+			<input class="csin" type="password" value="" style="border-radius:10px 0px 0px 10px;" maxlength="1"/>
+			<input class="csin" type="password" value="" maxlength="1"/>
+			<input class="csin" type="password" value="" maxlength="1"/>
+			<input class="csin" type="password" value="" maxlength="1"/>
+			<input class="csin" type="password" value="" maxlength="1"/>
+			<input class="csin" type="password" value=""  style="border-radius:0px 10px 10px 0px;" maxlength="1"/>	
+			<p id="p1" style="color: red; font-size: 20px; margin-top:20px ;">&nbsp;</p>
+			<p style="color: blueviolet;margin-top: 10px;font-size:20px ;">找回密码</p>
+		</div>
+		
+	</body>
+</html>

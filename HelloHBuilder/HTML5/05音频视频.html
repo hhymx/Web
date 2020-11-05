@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var player = new Audio();
+				player.src="../HTML学习/汪苏泷 - 追光者 (Live).mp3";
+				document.querySelector(".btn").onclick = function(){
+					console.log(1);
+					player.play();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<video controls autoplay src="../HTML学习/Wildlife.mp4"></video>
+		<!--<video>
+			<source src="../HTML学习/Wildlife.mp4"></source>
+		</video>-->
+		<button class="btn">播放</button>
+		<!--<audio controls src="../HTML学习/汪苏泷 - 追光者 (Live).mp3"></audio>-->
+	</body>
+</html>

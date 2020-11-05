@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.img1{
+				width: 300px;
+				display: block;	
+				margin: 0 auto;			
+			}
+			.obox{
+				width: 300px;
+				height: 300px;
+				border: solid 1px black;
+				background: burlywood;
+				margin: 0 auto;
+				position: relative;
+			}
+			.active{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100px;
+				height: 100px;
+				border: solid 1px white;
+				box-sizing: border-box;
+				background: url(../img/cat_face.jpg) 0px 0px/300px;
+				transition: all 0.3s;
+				z-index: 10;
+			}
+		</style>
+		<script src="../js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var arr =[];
+				for(var i=0;i<3;i++){
+					for(var j=0;j<3;j++){				
+						var n1 = -j*100;//背景图x坐标
+						var n2 = -i*100;//背景图y坐标
+						var n3 = i*3+j;
+						var obj = {
+							x : n1,
+							y : n2,
+							name : n3
+						}
+						arr.push(obj);
+					}
+				}
+				console.log(arr);
+				var arr2 =[];//打乱的顺序
+				fn();
+				function fn(){
+					var n1 = Math.floor(Math.random()*9);
+					console.log(arr2.length);
+					if(arr2.length<9){
+						if(arr2.indexOf(n1)==-1){
+							arr2.push(n1);
+						}
+						fn();
+					}
+				}
+				console.log(arr2);
+				//创建九宫格
+				for(var i=0;i<3;i++){
+					for(var j=0;j<3;j++){
+						var div1 = $("<div></div");
+						div1.addClass("active");
+						div1.css({"top":i*100,"left":j*100});
+						div1.addClass("box"+arr[arr2[i*3+j]].name);
+						if(arr2[i*3+j]==8){
+							div1.css({"background":"white","z-index":1} );
+						}else{
+							div1.css("background","url(../img/cat_face.jpg) "+arr[arr2[i*3+j]].x+"px "+arr[arr2[i*3+j]].y+"px"+"/300px" );
+						}
+						$(".obox").append(div1);
+					}
+				}
+				$(".obox div").not(".box8").click(function(){
+					var x1 = $(this).position().left;
+					var y1 = $(this).position().top;
+					var x2 = $(".box8").position().left;
+					var y2 = $(".box8").position().top;
+					//判断白色方块是否在上边
+					if((x1==x2 && y1-y2==100) || (x1==x2 && y1-y2==-100) ){
+						$(this).css("top",y2);
+						$(".box8").css("top",y1);
+					}else if((x1-x2==100 && y1==y2)||(x1-x2==-100 && y1==y2)){
+						$(this).css("left",x2);
+						$(".box8").css("left",x1);
+					}else{
+						console.log("不动")
+					}
+					
+				})
+				var timer = setInterval(function(){
+					//拼图正确
+					var box0y = $(".box0").position().top;
+					var box0x = $(".box0").position().left;
+					var box1y = $(".box1").position().top;
+					var box1x = $(".box1").position().left;
+					var box2y = $(".box2").position().top;
+					var box2x = $(".box2").position().left;
+					var box3y = $(".box3").position().top;
+					var box3x = $(".box3").position().left;
+					var box4y = $(".box4").position().top;
+					var box4x = $(".box4").position().left;
+					var box5y = $(".box5").position().top;
+					var box5x = $(".box5").position().left;
+					var box6y = $(".box6").position().top;
+					var box6x = $(".box6").position().left;
+					var box7y = $(".box7").position().top;
+					var box7x = $(".box7").position().left;
+					var box8y = $(".box8").position().top;
+					var box8x = $(".box8").position().left;
+					console.log(box0y+"，"+box0x+";"+box1y+"，"+box1x+";"+box2y+"，"+box2x+";"+box3y+"，"+box3x+";"+box4y+"，"+box4x+";"+box5y+"，"+box5x+";"+box6y+"，"+box6x+";"+box7y+"，"+box7x+";"+box8y+"，"+box8x+";")
+					if(box0y==0 &&box0x==0 && box1y==0 &&box1x==100&& box2y==0 &&box2x==200&& box3y==100 &&box3x==0&& box4y==100 &&box4x==100&& box5y==100 &&box5x==200&& box6y==200 &&box6x==0&& box7y==200 &&box7x==100 && box8y==200 && box8x==200){
+						clearInterval(timer);
+						alert("拼图正确");
+					}
+				},30)
+			})
+		</script>
+	</head>
+	<body>
+		<img class="img1" src="../img/cat_face.jpg" />
+		<div class="obox">
+			
+		</div>
+	</body>
+</html>

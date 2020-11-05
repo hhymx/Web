@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			body{
+				background-color: #CCCCCC;
+			}
+			.div1{
+				width: 450px;
+				height: 300px;
+				margin: 100px auto;
+				background-color: white;
+				padding-top: 10px;
+			}
+			.div1_1{
+				width: 350px;
+				height: 200px;
+				margin: 10px auto 20px auto;
+				border: solid 1px black;
+				position: relative;
+			}
+			.div1_2{
+				width: 350px;
+				height: 20px;
+				background-color: #CCCCCC;
+				border-radius: 10px;
+				margin: 0px auto;
+				position: relative;
+			}
+			#div1_2_1{
+				width: 50px;
+				height: 30px;
+				background-color: #FF8C00;
+				position: relative;
+				border-radius:10px ;
+				top: -5px;
+			}
+			#img1{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function () {
+				var bu1=document.getElementById("bu1");
+				var img0=document.getElementById("img0");
+				var img1=document.getElementById("img1");
+				var hua=document.getElementById("div1_2_1");
+				var le=document.getElementsByClassName("div1_2")[0];
+				var smallimg=["b2.png","c2.png","d2.png"];
+				var bigimg=["b1.png","c1.png","d1.png"];
+				var imgx=[249,255,241];
+				var imgy=[20,31,63];
+				var x=0;
+				var xy=Math.round(Math.random()*2);
+				img0.src="img/"+bigimg[xy];
+				img1.src="img/"+smallimg[xy];
+				img1.style.top=imgy[xy]+"px";
+
+				bu1.onclick=function(){//刷新
+					sx();
+				}
+				function sx(){
+					x=0;
+					xy=Math.round(Math.random()*2);
+					img0.src="img/"+bigimg[xy];
+					img1.src="img/"+smallimg[xy];
+					img1.style.top=imgy[xy]+"px";
+					hua.style.left=x+"px";
+					img1.style.left=x+"px";
+				}
+				hua.onmousedown = function(evt) {//按下鼠标
+					var oE  = evt || event; 
+					var x1=oE.clientX-hua.offsetLeft-le.offsetLeft;
+					document.onmousemove = function(evt) {//鼠标移动
+						var oEvent  = evt || event; 
+						x=oEvent.clientX-le.offsetLeft-x1;
+						if(x>=0&&x<=le.offsetWidth-hua.offsetWidth){
+							hua.style.left=x+"px";
+							img1.style.left=x+"px";
+						}
+					} 
+				}	
+				window.onmouseup = function() {//松开了鼠标
+					document.onmousemove = null;
+					if (x>=imgx[xy]-10&&x<=imgx[xy]+10) {
+						x=0;
+						alert("成功");
+						sx();
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div class="div1">
+			<input type="button" id="bu1" value="刷新" />
+			<div class="div1_1">
+				<img id="img0" src="" alt="" style="width: 350px;height: 200px;"/>
+				<img id="img1" src="" alt="" style="width:50px ;height: 55px;"/>
+			</div>
+			<div class="div1_2">
+				<div id="div1_2_1"></div>
+			</div>
+		</div>
+	</body>
+</html>

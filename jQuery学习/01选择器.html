@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.5.1.js"  type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			document.addEventListener("DOMContentLoaded",function(){
+//				var p1 = document.querySelector(".p1");
+//				p1.style.color = "red";
+//			})
+
+//			$(document).ready(function(){
+//				console.log("文档加载 完毕");
+//			})
+			//简写
+			$(function(){
+				//根据给定的类匹配元素。
+				$(".p1").css("color","red");
+				
+				//根据给定的ID匹配一个元素。
+				$("#s1").css("color","blue");
+				
+				//根据给定的元素名匹配所有元素
+				$("li").css("color","red");
+				
+				//匹配所有元素
+				$("*").css("font-size","30px");
+				
+				//将每一个选择器匹配到的元素合并后一起返回。
+				$(".p1,#s1").css("background","gold");
+				
+				//在给定的祖先元素下匹配所有的后代元素
+				$(".list li").css("background","green");
+				
+				//在给定的父元素下匹配所有的子元素
+				$(".obox>a").css("color","black");
+				
+				//匹配其父元素下的第N个子或奇偶元素
+				$(".list li:nth-child(-n+2)").css("background","blue");
+			})
+		</script>
+	</head>
+	<body>
+		<p class="p1">hello word</p>
+		<span id="s1">山东黄金法国海军的收费</span>
+		<ul class="list">
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+		</ul>
+		<div class="obox">
+			<h3>
+				<a href="#">heheheh</a>
+			</h3>
+			<a href="#">aaaaaaaaa</a>
+		</div>
+	</body>
+</html>

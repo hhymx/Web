@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.hua{
+				border-radius: 100%;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			.list{
+				width: 100px;
+				list-style: none;
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				display: none;
+				background-color: white;
+				z-index: 10;
+			}
+			.list li{
+				border: solid 1px #666;
+				text-align: center;
+				height: 30px;
+				line-height: 30px;
+				margin-top: -1px;
+			}
+			.list li:hover{
+				background: #999;
+				color: white;
+				cursor: pointer;
+			}
+			#mou{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 10px;
+				height: 10px;
+				border-radius: 100%;
+				border: solid 1px black;
+				background-color: #000000;	
+				z-index: 9;		
+			}
+		</style>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded",function(){
+				var list = document.querySelector(".list");
+				var mou=document.getElementById("mou");
+				var Drd=document.getElementById("drawing_board");
+				var	size=10;//画笔大小
+				var bgc="#000000";//画笔颜色
+				var moudo=false;
+				document.onmousedown=function (evt) {//鼠标按下
+					if(evt.button==0){
+						moudo=true;
+					}
+				}
+				document.onmouseup=function (evt) {//鼠标松开
+					if(evt.button==0){
+						moudo=false;
+					}
+				}	
+				document.onmousemove=function (evt) {//鼠标移动
+					mou.style.top=evt.clientY-size/2+"px";
+					mou.style.left=evt.clientX-size/2+"px";
+					if(moudo){
+						var divc=document.createElement("div"); 
+						divc.className="hua";
+						divc.style.height= size+"px";
+						divc.style.width= size+"px";
+						divc.style.backgroundColor=bgc;
+						divc.style.top=evt.clientY-size/2+"px";
+						divc.style.left=evt.clientX-size/2+"px";
+						Drd.appendChild(divc); 
+					}
+				}
+	
+				document.oncontextmenu = function(evt){//右键菜单
+					list.style.top=evt.clientY+"px";
+					list.style.left=evt.clientX+"px";
+					list.style.display="block";
+					return false;
+				}
+				document.onclick=function(){
+					list.style.display = "none";
+				}
+				var lix=list.querySelectorAll("li");
+				for (var i=0;i<lix.length;i++) {
+					lix[i].index=i;
+					lix[i].onmousedown=function(evt) {
+						var e=evt||event;
+						e.cancelBubble = true;//1, 取消冒泡
+						e.stopPropagation();//2, 停止传播
+						switch (this.index){
+							case 0:Drd.innerHTML="";
+								break;
+							case 1:size=10;
+								break;
+							case 2:size=20;
+								break;
+							case 3:size=30;
+								break
+							case 4:bgc="#FFD700";
+								break;
+							case 5:bgc="blue";
+								break;
+							case 6:bgc="#000000";
+								break;
+							case 7:bgc="white";
+								break;
+							default:
+								break;
+						}
+						mou.style.height= size+"px";
+						mou.style.width= size+"px";
+						mou.style.backgroundColor=bgc;
+						list.style.display = "none";
+					}
+				}	
+			})
+
+		</script>
+	</head>
+	<body>
+		<div id="mou"></div>
+		<ul class="list">
+			<li>清空画板</li>
+			<li>小号画笔</li>
+			<li>中号画笔</li>
+			<li>大号画笔</li>
+			<li>黄色画笔</li>
+			<li>蓝色画笔</li>
+			<li>黑色画笔</li>
+			<li>白色画笔</li>
+		</ul>
+		<div id="drawing_board" style="width: 100%;height: 2000px;"></div>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".btn").click(function(){
+					console.log("按钮被点击了");
+				})
+
+				//在选择元素上绑定一个或多个事件的事件处理函数。
+//				$(".btn").on("click",function(){
+//					console.log("按钮被点击了");
+//				})
+
+//				$(".btn").on("click",fn);
+//				function fn(){
+//					console.log("按钮被点击了");
+//				}
+//				function fn1(){
+//					console.log("按钮被移入了");
+//				}
+//				$(".btn").on({"click":fn,"mouseover":fn1});
+				
+				//在选择元素上移除一个或多个事件的事件处理函数。
+				$(".btn").off("click");
+				
+				//为每一个匹配元素的特定事件（像click）绑定一个一次性的事件处理函数。
+				$(".btn").one("mousemove",function(){
+					console.log(1);
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<button class="btn">按钮</button>
+	</body>
+</html>

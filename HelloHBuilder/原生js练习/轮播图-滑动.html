@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.obox{
+				width: 1000px;
+				height: 450px;
+				border: solid 5px black;
+				margin: 50px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			.box1{
+				height: 100%;
+				width: 6000px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				transition: all 0.5s;
+			}
+			.box1>div{
+				width: 1000px;
+				height: 100%;
+				background: red;
+				float: left;
+			}
+			.box1>div>img{
+				width: 1000px;
+				height: 100%;
+				display: block;
+			}
+			.list{
+				position: absolute;
+				right: 30px;
+				bottom: 20px;
+				list-style: none;
+			}
+			.list li{
+				width: 10px;
+				height: 10px;
+				background: white;
+				border: solid 1px black;
+				border-radius: 100%;
+				float: left;
+				margin: 0px 5px;
+				cursor: pointer;
+			}
+			.list li:first-child{
+				background: red;
+			}
+			.prev{
+				width: 41px;
+				height: 69px;
+				background: url(https://i1.mifile.cn/f/i/2014/cn/icon/icon-slides.png) no-repeat -84px 50%;
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 0px;
+				margin-top: -34px;
+				cursor: pointer;
+			}
+			.next{
+				width: 41px;
+				height: 69px;
+				background: url(https://i1.mifile.cn/f/i/2014/cn/icon/icon-slides.png) no-repeat -125px 50%;
+				display: block;
+				position: absolute;
+				top: 50%;
+				right: 0px;
+				margin-top: -34px;
+				cursor: pointer;
+			}
+		</style>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded",function(){
+				var obox = document.querySelector(".obox");
+				var box1 = obox.querySelector(".box1");
+				var oimg = box1.querySelectorAll("img");
+				var list = document.querySelector(".list");
+				var oli = list.querySelectorAll("li");
+				var prev = document.querySelector(".prev");
+				var next = document.querySelector(".next");
+				var i= 0 ;
+				var timer = setInterval(banner,3000);
+				var w = oimg[0].offsetWidth;
+				function banner(){
+					i++;
+					if(i==oimg.length){
+						i=1;
+						box1.style.transition = "none";
+						box1.style.left = 0+"px";
+						setTimeout(function(){
+							box1.style.transition = "all 0.5s";
+							box1.style.left = -i*w+"px";
+						},50);
+					}else{
+						box1.style.left = -i*w+"px";
+					}
+					console.log(i);
+					icon();
+				}
+				function icon(){
+					for(var j=0;j<oli.length;j++){
+						oli[j].style.background = "white";
+					}
+					if(i==oimg.length-1){
+						oli[0].style.background = "red";
+					}else{
+						oli[i].style.background = "red";
+					}
+				}
+				obox.onmouseenter = function(){
+					clearInterval(timer);
+				}
+				obox.onmouseleave= function(){
+					timer = setInterval(banner,3000);
+				}
+				//下一张
+				next.onclick = function(){
+					if(parseInt(window.getComputedStyle(box1,null)["left"])%w==0){
+						banner();
+					}
+				}
+				//上一张
+				prev.onclick = function(){
+					if(parseInt(window.getComputedStyle(box1,null)["left"])%w==0){
+						i--;
+						if(i<0){
+							i=oimg.length-2;
+							box1.style.transition = "none";
+							box1.style.left = -(oimg.length-1)*w+"px";
+							setTimeout(function(){
+								box1.style.transition = "all 0.5s";
+								box1.style.left = -i*w+"px";
+							},50);
+						}else{
+							box1.style.left = -i*w+"px";
+						}
+						console.log(i);
+						icon();
+					}
+				}
+				//点击小圆圈
+				for(var k=0;k<oli.length;k++){
+					oli[k].index = k;
+					oli[k].onclick = function(){
+						i=this.index;
+						icon();
+						box1.style.left = -i*w+"px";
+					}
+				}
+			})
+		</script>
+	</head>
+	<body>
+		<div class="obox">
+			<div class="box1">
+				<div>
+					<img src="img/L0.jpg" />
+				</div>
+				<div>
+					<img src="img/L1.jpg" />
+				</div>
+				<div>
+					<img src="img/L2.jpg" />
+				</div>
+				<div>
+					<img src="img/L3.jpg" />
+				</div>
+				<div>
+					<img src="img/L.jpg" />
+				</div>
+				<div>
+					<img src="img/L0.jpg" />
+				</div>
+			</div>
+			<ul class="list">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<span class="prev"></span>
+			<span class="next"></span>
+		</div>
+	</body>
+</html>
