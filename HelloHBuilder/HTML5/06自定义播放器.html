@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.obox{
+				width: 350px;
+				margin: 50px auto;
+				border: solid 1px black;
+			}
+			.hd{
+				position: relative;
+				height: 200px;
+				background: burlywood;
+				padding-top: 10px;
+			}
+			.hd h3{
+				text-align: center;
+				padding: 0px 0px 0px;
+			}
+			.hd .imgbox{
+				width: 80px;
+				height: 80px;
+				border-radius: 100%;
+				background: orange;
+				margin: 0 auto;
+			}
+			.hd img{
+				width: 100%;
+				height: 100%;
+				display: block;
+			}
+			.prev,.next{
+				position: absolute;
+				top: 80px;
+				left: 60px;
+			}
+			.next{
+				left: 230px;
+			}
+			.play-btn{
+				width: 60px;
+				position: absolute;
+				top: 140px;
+				left: 50%;
+				margin-left: -30px;
+			}
+			.timebox{
+				position: absolute;
+				bottom: 5px;
+				width: 94%;
+				left: 3%;
+				font-size: 14px;
+			}
+			.timebox input{
+				width: 180px;
+				vertical-align: middle;
+			}
+			.timebox b{
+				font-weight: 500;
+			}
+			.ft{
+				padding: 30px 0px 0px;
+			}
+			.ft p{
+				margin: 10px 0px;
+			}
+			.ft h3{
+				float: left;
+				margin-left: 20px;
+			}
+			.list{
+				float: right;
+				margin-right: 15px;
+			}
+			.list li:first-child{
+				color: red;
+			}
+			.list li{
+				float: left;
+				list-style: none;
+				margin: 0px 5px;
+			}
+			.list2{
+				clear: both;
+				padding: 20px 20px 10px;
+			}
+			.list2 p:first-child{
+				color: red;
+			}
+		</style>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded",function(){
+				var oh3 = document.querySelector(".oh3");
+				var prev = document.querySelector(".prev");
+				var next = document.querySelector(".next");
+				var playbtn = document.querySelector(".play-btn");
+				var list2 = document.querySelector(".list2");
+				var list = document.querySelector(".list");
+				var b2 = document.querySelector(".b2");
+				var b1 = document.querySelector(".b1");
+				var myrange = document.querySelector(".myrange");
+				var op = list2.querySelectorAll("p");
+				var oli = list.querySelectorAll("li");
+				var i = 0;
+				var str = "单曲";
+				var player = new Audio();
+				player.src = "video/"+op[i].innerHTML;
+				//播放按钮
+				playbtn.onclick = function(){
+					if(this.innerHTML=="播放"){
+						player.play();
+						this.innerHTML="暂停";
+					}else{
+						player.pause();
+						this.innerHTML="播放";
+					}
+				}
+				//下一首
+				next.onclick = function(){
+					playbtn.innerHTML="暂停";
+					i++;
+					if(i==op.length){
+						i=0;
+					}
+					for(var j=0;j<op.length;j++){
+						op[j].style.color = "black";
+					}
+					op[i].style.color = "red";
+					player.src = "video/"+op[i].innerHTML;
+					player.play();
+				}
+				//上一首
+				prev.onclick = function(){
+					playbtn.innerHTML="暂停";
+					i--;
+					if(i<0){
+						i=op.length-1;
+					}
+					for(var j=0;j<op.length;j++){
+						op[j].style.color = "black";
+					}
+					op[i].style.color = "red";
+					player.src = "video/"+op[i].innerHTML;
+					player.play();
+				}
+				for(var k=0;k<oli.length;k++){
+					oli[k].onclick = function(){
+						for(var j=0;j<oli.length;j++){
+							oli[j].style.color = "black";
+						}
+						this.style.color = "red";
+						str = this.innerHTML;						
+					}
+				}
+				//歌曲结束
+				player.onended = function(){
+					if(str=="单曲"){
+						player.play();
+					}
+					if(str=="顺序"){
+						i++;
+						if(i==op.length){
+							i=0;
+						}
+						for(var j=0;j<op.length;j++){
+							op[j].style.color = "black";
+						}
+						op[i].style.color = "red";
+						player.src = "video/"+op[i].innerHTML;
+						player.play();	
+					}
+					if(str=="随机"){
+						i=Math.floor(Math.random()*op.length);
+						for(var j=0;j<op.length;j++){
+							op[j].style.color = "black";
+						}
+						op[i].style.color = "red";
+						player.src = "video/"+op[i].innerHTML;
+						player.play();	
+					}
+				}
+				//当前播放位置发生改变时产生该事件
+				player.ontimeupdate = function(){
+					setTimeout(function(){
+						var n1 = Math.ceil(player.currentTime);//当前时长
+						var n2 = Math.ceil(player.duration);//总时长
+						fn1(n1);
+						fn2(n2);			
+						myrange.value = n1/n2*100;
+					},100)
+				}
+				function fn1(n){
+					var m = parseInt(n/60);//分
+					var s = n%60;//秒
+					if(m<10){
+						m="0"+m;
+					}
+					if(s<10){
+						s = "0"+s;
+					}
+					b1.innerHTML = m+":"+s;
+				}
+				function fn2(n){
+					var m = parseInt(n/60);//分
+					var s = n%60;//秒
+					if(m<10){
+						m="0"+m;
+					}
+					if(s<10){
+						s = "0"+s;
+					}
+					b2.innerHTML = m+":"+s;
+				}
+				
+				//改变进度条
+				myrange.oninput = function(){
+					player.currentTime=this.value/100*player.duration;					
+				}
+			})
+		</script>
+	</head>
+	<body>
+		<article class="obox">
+			<header class="hd">
+				<h3 class="oh3">陈赫、郑恺 - 奔跑 (Live).mp3</h3>
+				<div class="imgbox"><img src="../img/HBuilder.png" /></div>
+				<button class="prev">上一首</button>
+				<button class="next">下一首</button>
+				<button class="play-btn">播放</button>
+				<section class="timebox">
+					<span>时长：</span>
+					<input class="myrange" type="range" min="0" max="100" value="0" />
+					<b class="b1">0:00</b>/
+					<b class="b2">03:10</b>
+				</section>
+			</header>
+			<footer class="ft">
+				<h3>歌曲信息</h3>
+				<ul class="list">
+					<li>单曲</li>
+					<li>顺序</li>
+					<li>随机</li>
+				</ul>
+				<section class="list2">
+					<p>陈赫、郑恺 - 奔跑 (Live).mp3</p>
+					<p>冯提莫 - 明天你好.mp3</p>
+					<p>林风 - 你的承诺.mp3</p>
+					<p>铃声 - 速度与激情 (铃声).mp3</p>
+					<p>汪苏泷 - 追光者 (Live).mp3</p>
+				</section>
+			</footer>
+		</article>
+	</body>
+</html>
