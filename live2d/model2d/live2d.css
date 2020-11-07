@@ -5,6 +5,7 @@
     font-size: 32px;
     font-weight: 500;
     color: #d2e1ec;
+    background: url(../img/bac.jpg) no-repeat center;
 }  
 .waifu {
     position: fixed;
@@ -15,7 +16,7 @@
     transition: all .3s ease-in-out;
     -webkit-transform: translateY(3px);
     transform: translateY(3px);
-    cursor: url(img/1.png), default !important;
+    cursor: url(../img/1.png), default !important;
 }
 
 .waifu:hover {
@@ -62,7 +63,7 @@
 
 .waifu:hover .waifu-tool {
     display: block;
-    cursor: url(img/2.png), default !important;
+    cursor: url(../img/2.png), default !important;
 }
 
 .waifu-tool span {
@@ -71,7 +72,7 @@
     color: #5b6c7d;
     line-height: 20px;
     transition: 0.2s;
-    cursor: url(img/2.png), default !important;
+    cursor: url(../img/2.png), default !important;
 }
 
 .waifu-tool span:hover {
