@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calamus</title>
+    <link rel="stylesheet" type="text/css" href="model2d/live2d.css" />
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="waifu" id="waifu">
+       <div class="waifu-tips"></div>
+       <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+       <div class="waifu-tool">
+            <span class="calamus cl-home"></span>
+            <span class="calamus cl-liaotianduihua"></span>
+            <span class="calamus cl-icon16"></span>
+            <span class="calamus cl-keaide"></span>        
+            <span class="calamus cl-paizhao"></span>
+            <span class="calamus cl-yincangbukejian"></span>
+       </div>       
+    </div>
+    <script src="model2d/live2d.js"></script> 
+    <script src="model2d/message.js"></script>
+   
+    <script type="text/javascript">
+    	$('#waifu').on("mousedown", function(e) {
+  			// 点击位置
+   		 	var downX = e.pageX;
+    		var downY = e.pageY;
+   		 	// 元素原来左上角位置
+  		  	var thisX = $(this).offset().left;
+   		 	var thisY = $(this).offset().top;
+  		  	$(this).mousemove(function(e) {
+      		  	// 当前位置 = 原位置+移动位置-点击位置
+      		  	var left = thisX + e.pageX - downX;
+       		 	var top = thisY + e.pageY - downY;
+       		 	$(this).css({'left': left,'top': top})
+   		 	});
+   			//解绑移动事件。
+  			$(this).on('mouseup mouseleave', function() {
+      			$(this).off('mousemove')
+   		 	})
+		})
+    </script>
+</body>
+</html>
